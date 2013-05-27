@@ -1,0 +1,66 @@
+URxvt.depth: 32
+URxvt.scrollStyle: plain
+URxvt.vt100*geometry: 80x50
+URxvt.url-launcher:      /usr/bin/chromium
+URxvt.matcher.button:   1
+URxvt.charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+URxvt.perl-ext-common:  default,matcher,vtwheel,clipboard
+URxvt.font: xft:Terminus:size=8
+URxvt.italicFont: xft:Terminus:size=8
+URxvt.geometry: 80x25
+URxvt.scrollBar:        false
+URxvt.scrollBar_right:        true
+URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/Terminal.svg
+URxvt.background:  [95]#090C19
+URxvt.foreground:  #E6E6E6
+URxvt.cursorColor: #1AAA13
+URxvt.keysym.C-C: perl:clipboard:copy
+URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.keysym.C-A-V: perl:clipboard:paste_escaped
+URxvt.iso14755 : false
+
+Xcursor.theme: Human
+
+!*background: #D0CECB
+!*foreground: #090C19
+
+! black
+*color0:  #222946
+! dark grey
+*color8:  #8C8B89
+
+! red
+*color1:  #BE1919
+! bright red
+*color9:  #DC2F32 
+
+! green
+*color2:  #1AAA13
+! bright green
+*color10: #5DCE33
+
+! yellow
+*color3:  #FFAA3E
+! bright yellow
+*color11: #FADD2D
+
+! blue
+*color4:  #3753CC
+! bright blue
+*color12: #507CFF
+
+! magenta
+*color5:  #BE007F
+! bright magenta
+*color13: #E65CD0
+
+! cyan
+*color6: #14BDCC
+! bright cyan
+*color14: #48F3F3
+
+! light grey
+*color7:  #AEAEAE
+! white
+*color15: #DBDDE4
+
