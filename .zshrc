@@ -23,7 +23,6 @@ if [ "$TERM" = "linux" ]; then
     clear # default input colours
 fi
 
-
 setopt always_to_end
 setopt no_case_glob 
 setopt complete_in_word
@@ -41,7 +40,7 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
 setopt share_history
-setopt promptsubst
+setopt prompt_subst
 
 export HISTFILE="${HOME}"/.zsh-history
 export HISTSIZE=1000000
@@ -50,10 +49,11 @@ export SAVEHIST=$HISTSIZE
 source /etc/profile
 
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' formats " %F{green}%b%u%f"
+zstyle ':vcs_info:git*' formats " %F{green}%b%f %F{red}%u%f"
 zstyle ':vcs_info:*' check-for-changes true
 
 precmd() {
+    [[ $history[$[ HISTCMD -1 ]] == *(pacaur)* ]] && rehash
     vcs_info
 }
 
@@ -96,9 +96,9 @@ zstyle ':completion:*' users off
 
 PROMPT="➤ "
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-	RPROMPT="[%{%(!.$fg[magenta].$fg[green])%}%2~%{$reset_color%}]"
+	RPROMPT='[%{%(!.$fg[magenta].$fg[green])%}%2~%{$reset_color%}]'
 else
-	RPROMPT="[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}${vcs_info_msg_0_}]"
+	RPROMPT='[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}${vcs_info_msg_0_}]'
 fi
 
 typeset -A key
