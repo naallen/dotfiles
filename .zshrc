@@ -1,27 +1,7 @@
-autoload -Uz compinit promptinit colors vcs_info 
+autoload -Uz compinit promptinit colors add-zsh-hook
 compinit 
 promptinit
 colors
-
-if [ "$TERM" = "linux" ]; then
-    echo -en "\e]P0000000" #black
-    echo -en "\e]P88C8B89" #darkgrey
-    echo -en "\e]P1BE1919" #darkred
-    echo -en "\e]P9DC2F32" #red
-    echo -en "\e]P21AAA13" #darkgreen
-    echo -en "\e]PA5DCE33" #green
-    echo -en "\e]P3FFAA3E" #brown
-    echo -en "\e]PBFADD2D" #yellow
-    echo -en "\e]P43753CC" #darkblue
-    echo -en "\e]PC507CFF" #blue
-    echo -en "\e]P5BE007F" #darkmagenta
-    echo -en "\e]PDE65CD0" #magenta
-    echo -en "\e]P614BDCC" #darkcyan
-    echo -en "\e]PE48F3F3" #cyan
-    echo -en "\e]P7AEAEAE" #lightgrey
-    echo -en "\e]PFDBDDE4" #white
-    clear # default input colours
-fi
 
 setopt always_to_end
 setopt no_case_glob 
@@ -42,19 +22,119 @@ setopt inc_append_history
 setopt share_history
 setopt prompt_subst
 
+# setting tty colors
+if [ "$TERM" = "linux" ]; then
+  echo -en "\e]P0000000" #black
+  echo -en "\e]P88C8B89" #darkgrey
+  echo -en "\e]P1BE1919" #darkred
+  echo -en "\e]P9DC2F32" #red
+  echo -en "\e]P21AAA13" #darkgreen
+  echo -en "\e]PA5DCE33" #green
+  echo -en "\e]P3FFAA3E" #brown
+  echo -en "\e]PBFADD2D" #yellow
+  echo -en "\e]P43753CC" #darkblue
+  echo -en "\e]PC507CFF" #blue
+  echo -en "\e]P5BE007F" #darkmagenta
+  echo -en "\e]PDE65CD0" #magenta
+  echo -en "\e]P614BDCC" #darkcyan
+  echo -en "\e]PE48F3F3" #cyan
+  echo -en "\e]P7AEAEAE" #lightgrey
+  echo -en "\e]PFDBDDE4" #white
+  clear # default input colours
+fi
+
+# hooks for git
+export __GIT_PROMPT_DIR=~/.zsh/
+add-zsh-hook chpwd chpwd_update_git_vars
+add-zsh-hook preexec preexec_update_git_vars
+add-zsh-hook precmd precmd_update_git_vars
+
+function preexec_update_git_vars() {
+  case "$2" in
+    git*)
+    __EXECUTED_GIT_COMMAND=1
+    ;;
+  esac
+}
+
+function precmd_update_git_vars() {
+  if [ -n "$__EXECUTED_GIT_COMMAND" ] || [ -n "$ZSH_THEME_GIT_PROMPT_NOCACHE" ]; then
+    update_current_git_vars
+    unset __EXECUTED_GIT_COMMAND
+  fi
+}
+
+function chpwd_update_git_vars() {
+  update_current_git_vars
+}
+
+function update_current_git_vars() {
+  unset __CURRENT_GIT_STATUS
+
+  local gitstatus="$__GIT_PROMPT_DIR/gitstatus.py"
+  _GIT_STATUS=`python ${gitstatus}`
+  __CURRENT_GIT_STATUS=("${(@f)_GIT_STATUS}")
+  GIT_BRANCH=$__CURRENT_GIT_STATUS[1]
+  GIT_REMOTE=$__CURRENT_GIT_STATUS[2]
+  GIT_STAGED=$__CURRENT_GIT_STATUS[3]
+  GIT_CONFLICTS=$__CURRENT_GIT_STATUS[4]
+  GIT_CHANGED=$__CURRENT_GIT_STATUS[5]
+  GIT_UNTRACKED=$__CURRENT_GIT_STATUS[6]
+  GIT_CLEAN=$__CURRENT_GIT_STATUS[7]
+}
+
+
+git_super_status() {
+  precmd_update_git_vars
+  if [ -n "$__CURRENT_GIT_STATUS" ]; then
+    STATUS="($GIT_BRANCH"
+    STATUS="$ZSH_THEME_GIT_PROMPT_PREFIX$ZSH_THEME_GIT_PROMPT_BRANCH$GIT_BRANCH%{${reset_color}%}"
+    if [ -n "$GIT_REMOTE" ]; then
+      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_REMOTE$GIT_REMOTE%{${reset_color}%}"
+    fi
+    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_SEPARATOR"
+    if [ "$GIT_STAGED" -ne "0" ]; then
+      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_STAGED$GIT_STAGED%{${reset_color}%}"
+    fi
+    if [ "$GIT_CONFLICTS" -ne "0" ]; then
+      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CONFLICTS$GIT_CONFLICTS%{${reset_color}%}"
+    fi
+    if [ "$GIT_CHANGED" -ne "0" ]; then
+      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CHANGED$GIT_CHANGED%{${reset_color}%}"
+    fi
+    if [ "$GIT_UNTRACKED" -ne "0" ]; then
+      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNTRACKED%{${reset_color}%}"
+    fi
+    if [ "$GIT_CLEAN" -eq "1" ]; then
+      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CLEAN"
+    fi
+    STATUS="$STATUS%{${reset_color}%}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    echo "$STATUS"
+  fi
+}
+
+# Default values for the appearance of the prompt. Configure at will.
+ZSH_THEME_GIT_PROMPT_PREFIX=" "
+ZSH_THEME_GIT_PROMPT_SUFFIX=""
+ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}●"
+ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}✖"
+ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}✚"
+ZSH_THEME_GIT_PROMPT_REMOTE=""
+ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
+
+
+
 export HISTFILE="${HOME}"/.zsh-history
 export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
 
 source /etc/profile
 
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' formats " %F{green}%b%f %F{red}%u%f"
-zstyle ':vcs_info:*' check-for-changes true
-
 precmd() {
-    [[ $history[$[ HISTCMD -1 ]] == *(pacaur)* ]] && rehash
-    vcs_info
+  [[ $history[$[ HISTCMD -1 ]] == *(pacaur)* ]] && rehash
 }
 
 [ -e /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -96,9 +176,9 @@ zstyle ':completion:*' users off
 
 PROMPT="➤ "
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-	RPROMPT='[%{%(!.$fg[magenta].$fg[green])%}%2~%{$reset_color%}]'
+  RPROMPT='[%{%(!.$fg[magenta].$fg[green])%}%2~%{$reset_color%}]$(git_super_status)'
 else
-	RPROMPT='[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}${vcs_info_msg_0_}]'
+  RPROMPT='[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}$(git_super_status)]'
 fi
 
 typeset -A key
@@ -116,66 +196,66 @@ key[PageUp]=${terminfo[kpp]}
 key[PageDown]=${terminfo[knp]}
 
 # setup key accordingly
-[[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
-[[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
+[[ -n "${key[Home]}"  ]]  && bindkey  "${key[Home]}"  beginning-of-line
+[[ -n "${key[End]}"   ]]  && bindkey  "${key[End]}"   end-of-line
 [[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
 [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
-[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      history-beginning-search-backward 
-[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    history-beginning-search-forward 
-[[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
+[[ -n "${key[Up]}"  ]]  && bindkey  "${key[Up]}"  history-beginning-search-backward 
+[[ -n "${key[Down]}"  ]]  && bindkey  "${key[Down]}"  history-beginning-search-forward 
+[[ -n "${key[Left]}"  ]]  && bindkey  "${key[Left]}"  backward-char
 [[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-    function zle-line-init () {
-        printf '%s' ${terminfo[smkx]}
-    }
-    function zle-line-finish () {
-        printf '%s' ${terminfo[rmkx]}
-    }
-    zle -N zle-line-init
-    zle -N zle-line-finish
+  function zle-line-init () {
+  printf '%s' ${terminfo[smkx]}
+  }
+  function zle-line-finish () {
+  printf '%s' ${terminfo[rmkx]}
+  }
+  zle -N zle-line-init
+  zle -N zle-line-finish
 fi
 
 extract () {
-        if [ -f $1 ] ; then
-           case $1 in
-                *.tar.bz2) tar xvjf $1 ;;
-                *.tar.gz) tar xvzf $1 ;;
-                *.bz2) bunzip2 $1 ;;
-                *.rar) rar x $1 ;;
-                *.gz) gunzip $1 ;;
-                *.tar) tar xvf $1 ;;
-                *.tbz2) tar xvjf $1 ;;
-                *.tgz) tar xvzf $1 ;;
-                *.zip) unzip $1 ;;
-                *.Z) uncompress $1 ;;
-                *.7z) 7z x $1 ;;
-                *) echo "don't know how to extract '$1′…" ;;
-            esac
-        else
-                echo "'$1′ is not a valid file!"
-        fi
+  if [ -f $1 ] ; then
+   case $1 in
+  *.tar.bz2) tar xvjf $1 ;;
+  *.tar.gz) tar xvzf $1 ;;
+  *.bz2) bunzip2 $1 ;;
+  *.rar) rar x $1 ;;
+  *.gz) gunzip $1 ;;
+  *.tar) tar xvf $1 ;;
+  *.tbz2) tar xvjf $1 ;;
+  *.tgz) tar xvzf $1 ;;
+  *.zip) unzip $1 ;;
+  *.Z) uncompress $1 ;;
+  *.7z) 7z x $1 ;;
+  *) echo "don't know how to extract '$1′…" ;;
+  esac
+  else
+  echo "'$1′ is not a valid file!"
+  fi
 }
 
 conf() {
-	case $1 in
-		conky)		vim ~/.conkyrc ;;
-		pacman)		sudo vim /etc/pacman.conf ;;
-		vim)		vim ~/.vimrc ;;
-		xinit)		vim ~/.xinitrc ;;
-		xresources)	vim ~/.Xresources && xrdb ~/.Xresources ;;
-		zsh)		vim ~/.zshrc && source ~/.zshrc ;;
-		i3)		vim ~/.i3/config ;;
-		compton)	vim ~/.compton.conf ;;
-		mutt)		vim ~/.muttrc ;;
-		*)			echo "Unknown application: $1" ;;
-	esac
+  case $1 in
+  conky)  vim ~/.conkyrc ;;
+  pacman)   sudo vim /etc/pacman.conf ;;
+  vim)  vim ~/.vimrc ;;
+  xinit)  vim ~/.xinitrc ;;
+  xresources) vim ~/.Xresources && xrdb ~/.Xresources ;;
+  zsh)  vim ~/.zshrc && source ~/.zshrc ;;
+  i3)   vim ~/.i3/config ;;
+  compton)  vim ~/.compton.conf ;;
+  mutt)   vim ~/.muttrc ;;
+  *)  echo "Unknown application: $1" ;;
+  esac
 }
 
 alias ls='ls --color'
-alias diff='colordiff'              
+alias diff='colordiff'  
 alias grep='grep --color=auto'
 alias more='less'
 alias df='df -h'
@@ -186,16 +266,16 @@ alias ping='ping -c 5'
 alias copy='rsync -zvrP '
 
 if [ $UID -ne 0 ]; then
-    alias sudo='sudo '
-    alias scat='sudo cat'
-    alias root='sudo su'
-    alias reboot='sudo reboot'
-    alias halt='sudo halt'
+  alias sudo='sudo '
+  alias scat='sudo cat'
+  alias root='sudo su'
+  alias reboot='sudo reboot'
+  alias halt='sudo halt'
 fi
 
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='rm -I'                    
+alias rm='rm -I'    
 alias ln='ln -i'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
@@ -205,33 +285,33 @@ if [ -e /usr/bin/pacaur ]; then INSTALLER="pacaur"; else INSTALLER="pacman"; fi
 
 [ -e /usr/share/zsh/site-functions/_packer ] && source /usr/share/zsh/site-functions/_packer
 if [ -e /usr/share/zsh/site-functions/_pacman ]; then
-	compdef -P _pacman_completions_installed_packages paclf
-	compdef -P _pacman_action_sync paci
-	compdef -P _pacman_action_sync pac
-	compdef -P _pacman_action_sync pacq
-	compdef -P _pacman_completions_installed_packages pacr
-	compdef -P _pacman_completions_installed_packages pacrem
+  compdef -P _pacman_completions_installed_packages paclf
+  compdef -P _pacman_action_sync paci
+  compdef -P _pacman_action_sync pac
+  compdef -P _pacman_action_sync pacq
+  compdef -P _pacman_completions_installed_packages pacr
+  compdef -P _pacman_completions_installed_packages pacrem
 fi
 
 [ -e /usr/bin/pacmatic ] && alias pacman=pacmatic
 
 if [ -e /usr/bin/pacman ]; then
-	alias pac="/usr/bin/${INSTALLER} -S"		
-	alias pacu="~/.bin/myupdate"		
-	alias pacuq="/usr/bin/${INSTALLER} -Syu --noconfirm"
-	alias pacr="sudo /usr/bin/pacman -Rs"		
-	alias pacrem="sudo /usr/bin/pacman -Rns"
-	alias pacs="/usr/bin/${INSTALLER} -Ss"		
-	alias paci="/usr/bin/${INSTALLER} -Si"		
-	alias pacins="sudo /usr/bin/pacman -U"
-	alias paclo="/usr/bin/pacman -Qdt"		
-	alias pacc="sudo /usr/bin/pacman -Scc"		
-	alias paclf="/usr/bin/pacman -Ql"		
-	alias pacexpl="sudo /usr/bin/pacman -D --asexp"	
-	alias pacimpl="sudo /usr/bin/pacman -D --asdep"	
-	alias pace="pacman -Qe"
-	alias pacq="/usr/bin/${INSTALLER} -S --noconfirm"
-	alias pacro="sudo pacman -Rs $(pacman -Qtdq)"
+  alias pac="/usr/bin/${INSTALLER} -S"  
+  alias pacu="~/.bin/myupdate"  
+  alias pacuq="/usr/bin/${INSTALLER} -Syu --noconfirm"
+  alias pacr="sudo /usr/bin/pacman -Rs"   
+  alias pacrem="sudo /usr/bin/pacman -Rns"
+  alias pacs="/usr/bin/${INSTALLER} -Ss"  
+  alias paci="/usr/bin/${INSTALLER} -Si"  
+  alias pacins="sudo /usr/bin/pacman -U"
+  alias paclo="/usr/bin/pacman -Qdt"  
+  alias pacc="sudo /usr/bin/pacman -Scc"  
+  alias paclf="/usr/bin/pacman -Ql"   
+  alias pacexpl="sudo /usr/bin/pacman -D --asexp" 
+  alias pacimpl="sudo /usr/bin/pacman -D --asdep" 
+  alias pace="pacman -Qe"
+  alias pacq="/usr/bin/${INSTALLER} -S --noconfirm"
+  alias pacro="sudo pacman -Rs $(pacman -Qtdq)"
 fi
 
 export WINEARCH=win32
@@ -248,4 +328,4 @@ alias \#="sudo "
 alias bc="bc -q"
 
 alias vi="vim"
-
+#vim: set tabstop=2 expandtab
