@@ -1,4 +1,4 @@
-autoload -Uz compinit promptinit zcalc colors 
+autoload -Uz compinit promptinit colors vcs_info 
 compinit 
 promptinit
 colors
@@ -40,14 +40,22 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
-setopt share_history 
+setopt share_history
+setopt promptsubst
 
 export HISTFILE="${HOME}"/.zsh-history
 export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
 
 source /etc/profile
-source ~/.zsh/zshrc.sh
+
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git*' formats " %F{green}%b%u%f"
+zstyle ':vcs_info:*' check-for-changes true
+
+precmd() {
+    vcs_info
+}
 
 [ -e /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -e ~/.zsh/zsh-syntax-highlighting.zsh ] && source ~/.zsh/zsh-syntax-highlighting.zsh
@@ -86,11 +94,11 @@ zstyle ':completion:*' users off
 
 [ -e $HOME/.zsh/notifyosd.zsh ] && [ -e /usr/bin/notify-send ] && . $HOME/.zsh/notifyosd.zsh
 
-PROMPT="%{➤%}  "
+PROMPT="➤ "
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-	RPROMPT="[%{%(!.$fg[magenta].$fg[green])%}%2~%{$reset_color%}%$(git_super_status)]"
+	RPROMPT="[%{%(!.$fg[magenta].$fg[green])%}%2~%{$reset_color%}]"
 else
-	RPROMPT="[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}%$(git_super_status)]"
+	RPROMPT="[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}${vcs_info_msg_0_}]"
 fi
 
 typeset -A key
@@ -193,24 +201,24 @@ alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
-if [ -e /usr/bin/packer ]; then INSTALLER="packer"; else INSTALLER="pacman"; fi
+if [ -e /usr/bin/pacaur ]; then INSTALLER="pacaur"; else INSTALLER="pacman"; fi
 
 [ -e /usr/share/zsh/site-functions/_packer ] && source /usr/share/zsh/site-functions/_packer
 if [ -e /usr/share/zsh/site-functions/_pacman ]; then
-	compdef -P _${INSTALLER}_completions_installed_packages paclf
-	compdef -P _${INSTALLER}_action_sync paci
-	compdef -P _${INSTALLER}_action_sync pac
-	compdef -P _${INSTALLER}_action_sync pacq
-	compdef -P _${INSTALLER}_completions_installed_packages pacr
-	compdef -P _${INSTALLER}_completions_installed_packages pacrem
+	compdef -P _pacman_completions_installed_packages paclf
+	compdef -P _pacman_action_sync paci
+	compdef -P _pacman_action_sync pac
+	compdef -P _pacman_action_sync pacq
+	compdef -P _pacman_completions_installed_packages pacr
+	compdef -P _pacman_completions_installed_packages pacrem
 fi
 
 [ -e /usr/bin/pacmatic ] && alias pacman=pacmatic
 
 if [ -e /usr/bin/pacman ]; then
-	alias pac="sudo /usr/bin/${INSTALLER} -S"		
+	alias pac="/usr/bin/${INSTALLER} -S"		
 	alias pacu="~/.bin/myupdate"		
-	alias pacuq="sudo /usr/bin/${INSTALLER} -Syu --noconfirm"
+	alias pacuq="/usr/bin/${INSTALLER} -Syu --noconfirm"
 	alias pacr="sudo /usr/bin/pacman -Rs"		
 	alias pacrem="sudo /usr/bin/pacman -Rns"
 	alias pacs="/usr/bin/${INSTALLER} -Ss"		
