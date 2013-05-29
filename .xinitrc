@@ -15,7 +15,7 @@ synapse -s &
 numlockx &
 thunar --daemon &
 compton -cCb --vsync opengl &
-feh --bg-scale ~/Pictures/Wallpapers/Reflection_Wallpaper_2_by_all_one_line.png &
+sh ~/.fehbg &
 
 exec i3 
 
