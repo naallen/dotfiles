@@ -285,7 +285,7 @@ alias chgrp='chgrp --preserve-root'
 
 if [ -e /usr/bin/pacaur ]; then INSTALLER="pacaur"; else INSTALLER="pacman"; fi
 
-[ -e /usr/share/zsh/site-functions/_packer ] && source /usr/share/zsh/site-functions/_packer
+[ -e /usr/share/zsh/site-functions/_pacman ] && source /usr/share/zsh/site-functions/_pacman
 if [ -e /usr/share/zsh/site-functions/_pacman ]; then
   compdef -P _pacman_completions_installed_packages paclf
   compdef -P _pacman_action_sync paci
