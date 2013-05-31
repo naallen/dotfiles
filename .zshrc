@@ -127,8 +127,6 @@ ZSH_THEME_GIT_PROMPT_REMOTE=""
 ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
 
-
-
 export HISTFILE="${HOME}"/.zsh-history
 export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
@@ -285,17 +283,7 @@ alias chgrp='chgrp --preserve-root'
 
 if [ -e /usr/bin/pacaur ]; then INSTALLER="pacaur"; else INSTALLER="pacman"; fi
 
-[ -e /usr/share/zsh/site-functions/_pacman ] && source /usr/share/zsh/site-functions/_pacman
-if [ -e /usr/share/zsh/site-functions/_pacman ]; then
-  compdef -P _pacman_completions_installed_packages paclf
-  compdef -P _pacman_action_sync paci
-  compdef -P _pacman_action_sync pac
-  compdef -P _pacman_action_sync pacq
-  compdef -P _pacman_completions_installed_packages pacr
-  compdef -P _pacman_completions_installed_packages pacrem
-fi
-
-[ -e /usr/bin/pacmatic ] && alias pacman=pacmatic
+compdef pacaur=pacman 
 
 if [ -e /usr/bin/pacman ]; then
   alias pac="/usr/bin/${INSTALLER} -S"  
