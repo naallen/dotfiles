@@ -221,21 +221,21 @@ fi
 extract () {
   if [ -f $1 ] ; then
    case $1 in
-  *.tar.bz2) tar xvjf $1 ;;
-  *.tar.gz) tar xvzf $1 ;;
-  *.bz2) bunzip2 $1 ;;
-  *.rar) rar x $1 ;;
-  *.gz) gunzip $1 ;;
-  *.tar) tar xvf $1 ;;
-  *.tbz2) tar xvjf $1 ;;
-  *.tgz) tar xvzf $1 ;;
-  *.zip) unzip $1 ;;
-  *.Z) uncompress $1 ;;
-  *.7z) 7z x $1 ;;
-  *) echo "don't know how to extract '$1′…" ;;
-  esac
-  else
-  echo "'$1′ is not a valid file!"
+     *.tar.bz2) tar xvjf $1 ;;
+     *.tar.gz) tar xvzf $1 ;;
+     *.bz2) bunzip2 $1 ;;
+     *.rar) rar x $1 ;;
+     *.gz) gunzip $1 ;;
+     *.tar) tar xvf $1 ;;
+     *.tbz2) tar xvjf $1 ;;
+     *.tgz) tar xvzf $1 ;;
+     *.zip) unzip $1 ;;
+     *.Z) uncompress $1 ;;
+     *.7z) 7z x $1 ;;
+     *) echo "don't know how to extract '$1′…" ;;
+     esac
+   else
+     echo "'$1′ is not a valid file!"
   fi
 }
 
@@ -289,7 +289,11 @@ alias pacman=pacmatic
 
 if [ -e /usr/bin/pacman ]; then
   alias pac="/usr/bin/${INSTALLER} -S"  
-  alias pacu="~/.bin/myupdate"  
+  pacu() {
+    sudo pacman -Syu
+    pacaur -Sua
+    sudo pacman -Rs $(pacman -Qtdq)
+  }
   alias pacuq="/usr/bin/${INSTALLER} -Syu --noconfirm"
   alias pacr="sudo /usr/bin/pacman -Rs"   
   alias pacrem="sudo /usr/bin/pacman -Rns"
@@ -303,7 +307,7 @@ if [ -e /usr/bin/pacman ]; then
   alias pacimpl="sudo /usr/bin/pacman -D --asdep" 
   alias pace="pacman -Qe"
   alias pacq="/usr/bin/${INSTALLER} -S --noconfirm"
-  alias pacro="sudo pacman -Rs $(pacman -Qtdq)"
+  alias pacro='sudo pacman -Rs $(pacman -Qtdq)'
 fi
 
 export WINEARCH=win32
