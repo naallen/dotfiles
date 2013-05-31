@@ -1,7 +1,7 @@
 #!/bin/bash
 # does an update
 echo ":: updating system..."
-sudo pacman -Syu
+sudo pacmatic -Syu
 echo " "
 echo ":: update complete..."
 echo " "
@@ -9,7 +9,7 @@ echo " "
 # this function looped by the while loop later
 function orphanage {
 echo ":: checking if orphan packages exist on the system..."
-ORPHANS=`pacman -Qqdt`
+ORPHANS=`pacmatic -Qqdt`
 if [ -z "$ORPHANS" ]
 then
     echo ":: system is clean, will exit..."
@@ -17,7 +17,7 @@ then
     exit
 else
     echo -e ":: orphans found on the system.\n$ORPHANS\n\n:: Removing..."
-    sudo pacman -R --nosave $ORPHANS
+    sudo pacmatic -R --nosave $ORPHANS
 fi
 }
 # end of orphan function

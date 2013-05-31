@@ -283,7 +283,9 @@ alias chgrp='chgrp --preserve-root'
 
 if [ -e /usr/bin/pacaur ]; then INSTALLER="pacaur"; else INSTALLER="pacman"; fi
 
-compdef pacaur=pacman 
+compdef pacaur=pacman
+
+alias pacman=pacmatic
 
 if [ -e /usr/bin/pacman ]; then
   alias pac="/usr/bin/${INSTALLER} -S"  
