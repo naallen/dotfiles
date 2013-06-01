@@ -255,13 +255,12 @@ conf() {
 }
 
 alias ls='ls --color'
-alias diff='colordiff'  
+[ -e /usr/bin/colordiff ] && alias diff='colordiff'  
 alias grep='grep --color=auto'
 alias more='less'
 alias df='df -h'
 alias du='du -c -h'
 alias mkdir='mkdir -p -v'
-alias nano='vim'
 alias ping='ping -c 5'
 alias copy='rsync -zvrP '
 
@@ -282,10 +281,6 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
 if [ -e /usr/bin/pacaur ]; then INSTALLER="pacaur"; else INSTALLER="pacman"; fi
-
-compdef pacaur=pacman
-
-alias pacman=pacmatic
 
 if [ -e /usr/bin/pacman ]; then
   alias pac="/usr/bin/${INSTALLER} -S"  
