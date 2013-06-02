@@ -176,7 +176,7 @@ zstyle ':completion:*' users off
 
 PROMPT="%{➤%}  "
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  RPROMPT='[%{%(!.$fg[magenta].$fg[green])%}%2~%{$reset_color%}]$(git_super_status)'
+  RPROMPT='[%{%(!.$fg[magenta].$fg[green])%}%2~%{$reset_color%}$(git_super_status)]'
 else
   RPROMPT='[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}$(git_super_status)]'
 fi
