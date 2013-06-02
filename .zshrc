@@ -319,4 +319,3 @@ alias \#="sudo "
 alias bc="bc -q"
 
 alias vi="vim"
-#vim: set tabstop=2 expandtab
