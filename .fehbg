@@ -1,1 +1,1 @@
-feh  --bg-scale "$HOME/Pictures/Wallpapers/Reflection_Wallpaper_2_by_all_one_line.png" 
+feh  --bg-scale '/home/nick/Pictures/Wallpapers/Reflection_Wallpaper_2_by_all_one_line.png' 
