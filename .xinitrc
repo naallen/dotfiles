@@ -17,7 +17,7 @@ synapse -s &
 numlockx &
 thunar --daemon &
 compton -cCb --vsync opengl &
-hsetroot -full ~/Pictures/Wallpapers/Reflection_Wallpaper_2_by_all_one_line.png &
+hsetroot -fill ~/Pictures/Wallpapers/Reflection_Wallpaper_2_by_all_one_line.png &
 
 exec i3 
 
