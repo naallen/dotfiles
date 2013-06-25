@@ -43,6 +43,8 @@ if [ "$TERM" = "linux" ]; then
   clear # default input colours
 fi
 
+bindkey -v
+
 # hooks for git
 export __GIT_PROMPT_DIR=~/.zsh/
 add-zsh-hook chpwd chpwd_update_git_vars
