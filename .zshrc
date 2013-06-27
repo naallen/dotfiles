@@ -45,7 +45,7 @@ fi
 
 bindkey -v
 
-export PATH="$PATH:~/bin"
+export PATH="$PATH:$HOME/bin"
 
 # hooks for git
 export __GIT_PROMPT_DIR=~/.zsh/
