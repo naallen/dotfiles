@@ -287,7 +287,7 @@ alias chgrp='chgrp --preserve-root'
 if [ -e /usr/bin/pacaur ]; then INSTALLER="pacaur"; else INSTALLER="pacman"; fi
 
 if [ -e /usr/bin/pacman ]; then
-  alias pac="/usr/bin/${INSTALLER} -S"  
+  alias pac="sudo /usr/bin/${INSTALLER} -S"  
   pacu() {
     sudo pacman -Syu
     pacaur -Sua
