@@ -47,6 +47,9 @@ bindkey -v
 
 export PATH="$PATH:$HOME/bin"
 
+# ruby gems
+export PATH="$PATH:$HOME/.gem/ruby/2.0"
+
 # hooks for git
 export __GIT_PROMPT_DIR=~/.zsh/
 add-zsh-hook chpwd chpwd_update_git_vars
