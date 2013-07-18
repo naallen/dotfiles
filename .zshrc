@@ -322,6 +322,7 @@ alias tarug="tar xfvz"
 alias tarcg="tar cfvz"
 
 alias \#="sudo "
+alias \$=""
 
 alias bc="bc -q"
 
