@@ -18,7 +18,7 @@ numlockx &
 thunar --daemon &
 compton -cCb --vsync opengl &
 hsetroot -fill ~/Pictures/Wallpapers/Reflection_Wallpaper_2_by_all_one_line.png &
-/usr/bin/xscreensaver -no-splash &
+xfce4-power-manager &
 
 exec i3 
 
