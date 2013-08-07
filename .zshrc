@@ -148,8 +148,6 @@ precmd() {
 [ -e ~/.zsh/zsh-syntax-highlighting.zsh ] && source ~/.zsh/zsh-syntax-highlighting.zsh
 [ -e /usr/share/doc/pkgfile/command-not-found.zsh ] && source /usr/share/doc/pkgfile/command-not-found.zsh
 
-[[ $TTY == "/dev/tty1" ]] && exec startx -- vt1 &> /dev/null
-
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:*:*:*:*' menu select
