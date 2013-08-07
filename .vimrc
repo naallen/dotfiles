@@ -1,7 +1,8 @@
 set nocompatible
 set spelllang=en_ca
 set number
-
+set whichwrap+=<,>,[,],h,l
+set wrap linebreak
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
