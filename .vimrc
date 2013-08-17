@@ -80,8 +80,11 @@ if has ('gui_running')
 	colorscheme jellybeans
 	set guioptions-=T  "remove toolbar
 	set guioptions-=r  "remove right-hand scroll bar  
-	set	guifont=Terminus\ 8
+	set	guifont=Terminess\ Powerline\ 8
+	set guiheadroom=0
 endif
+
+set laststatus=2
 
 " Pathogen
 call pathogen#infect()
