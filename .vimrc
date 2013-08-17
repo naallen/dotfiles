@@ -74,4 +74,14 @@ if !exists(":DiffOrig")
 endif
 
 nnoremap <F5> :GundoToggle<CR>
-nnoremap <F6> :NERDTree<CR>
+nnoremap <F6> :NERDTree %<CR>
+
+if has ('gui_running')
+	colorscheme jellybeans
+	set guioptions-=T  "remove toolbar
+	set guioptions-=r  "remove right-hand scroll bar  
+	set	guifont=Terminus\ 8
+endif
+
+" Pathogen
+call pathogen#infect()
