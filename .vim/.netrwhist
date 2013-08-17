@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/usr/share/kbd/consolefonts'
+let g:netrw_dirhist_2='/home/nick/.zsh/completion'
+let g:netrw_dirhist_3='/home/nick/.offlineimap'
+let g:netrw_dirhist_4='/home/nick/Dropbox/Resume'
+let g:netrw_dirhist_5='/home/nick/Workshop/iOS/flipover/layout'
+let g:netrw_dirhist_6='/run/media/nick/bb4eed92-ea1c-45c7-8596-c03fc4beb261/etc/systemd/system/getty.target.wants'
