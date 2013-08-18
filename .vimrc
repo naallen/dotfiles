@@ -81,10 +81,36 @@ if has ('gui_running')
 	set guioptions-=T  "remove toolbar
 	set guioptions-=r  "remove right-hand scroll bar  
 	set	guifont=Terminess\ Powerline\ 8
-	set guiheadroom=0
 endif
 
 set laststatus=2
 
 " Pathogen
 call pathogen#infect()
+
+" custom modeline
+function! CustomModeLine(cid)
+        let i = &modelines
+        let lln = line("$")
+        if i > lln | let i = lln | endif
+        while i>0
+                let l = getline(lln-i+1)
+                if l =~ a:cid
+                        exec strpart(l, stridx(l, a:cid)+strlen(a:cid))
+                endif
+                let i = i-1
+        endwhile
+endfunction
+
+au BufReadPost * :call CustomModeLine("customvim:")
+
+" CTRL-X is Cut
+vnoremap <C-S-X> "+x
+
+" CTRL-C is Copy
+vnoremap <C-S-C> "+y
+
+" CTRL-V is Paste
+map <C-S-V>		"+gP
+
+cmap <C-S-V>		<C-R>+
