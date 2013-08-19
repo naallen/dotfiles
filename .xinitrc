@@ -16,7 +16,7 @@ twmnd &
 synapse -s &
 numlockx &
 thunar --daemon &
-compton -cCb --vsync opengl &
+compton -cCb --backend glx --paint-on-overlay --vsync opengl-swc &
 hsetroot -fill ~/Pictures/Wallpapers/Reflection_Wallpaper_2_by_all_one_line.png &
 xfce4-power-manager &
 
