@@ -59,11 +59,11 @@ if has("autocmd")
 
   augroup END
 
-else
 
-  set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
+
+set autoindent
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
@@ -113,4 +113,3 @@ vnoremap <C-S-C> "+y
 " CTRL-V is Paste
 map <C-S-V>		"+gP
 
-cmap <C-S-V>		<C-R>+
