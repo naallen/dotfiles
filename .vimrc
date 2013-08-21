@@ -70,17 +70,17 @@ set autoindent
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+    \ | wincmd p | diffthis
 endif
 
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :NERDTree %<CR>
 
 if has ('gui_running')
-	colorscheme jellybeans
-	set guioptions-=T  "remove toolbar
-	set guioptions-=r  "remove right-hand scroll bar  
-	set	guifont=Terminess\ Powerline\ 8
+  colorscheme jellybeans
+  set guioptions-=T  "remove toolbar
+  set guioptions-=r  "remove right-hand scroll bar
+  set guifont=Terminess\ Powerline\ 8
 endif
 
 set laststatus=2
@@ -113,4 +113,4 @@ vnoremap <C-S-C> "+y
 " CTRL-V is Paste
 map <C-S-V>		"+gP
 
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+let g:airline_powerline_fonts = 1
