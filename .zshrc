@@ -145,7 +145,7 @@ precmd() {
 }
 
 [ -e /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[ -e ~/.zsh/zsh-syntax-highlighting.zsh ] && source ~/.zsh/zsh-syntax-highlighting.zsh
+[ -e ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -e /usr/share/doc/pkgfile/command-not-found.zsh ] && source /usr/share/doc/pkgfile/command-not-found.zsh
 
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
