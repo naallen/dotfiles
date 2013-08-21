@@ -104,13 +104,13 @@ endfunction
 
 au BufReadPost * :call CustomModeLine("customvim:")
 
-" CTRL-X is Cut
-vnoremap <C-S-X> "+x
+" SHIFT-Del are Cut
+vnoremap <S-Del> "+x
 
-" CTRL-C is Copy
-vnoremap <C-S-C> "+y
+" CTRL-Insert are Copy
+vnoremap <C-Insert> "+y
 
-" CTRL-V is Paste
-map <C-S-V>		"+gP
+" SHIFT-Insert are Paste
+map <S-Insert>		"+gP
 
 let g:airline_powerline_fonts = 1
