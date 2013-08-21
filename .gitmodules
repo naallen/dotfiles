@@ -1,5 +1,5 @@
-[submodule ".vim/zsh-syntax-highlighting"]
-	path = .vim/zsh-syntax-highlighting
+[submodule ".zsh/zsh-syntax-highlighting"]
+	path = .zsh/zsh-syntax-highlighting
 	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule ".vim/bundle/gundo"]
 	path = .vim/bundle/gundo
