@@ -113,3 +113,4 @@ vnoremap <C-S-C> "+y
 " CTRL-V is Paste
 map <C-S-V>		"+gP
 
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
