@@ -90,16 +90,16 @@ call pathogen#infect()
 
 " custom modeline
 function! CustomModeLine(cid)
-        let i = &modelines
-        let lln = line("$")
-        if i > lln | let i = lln | endif
-        while i>0
-                let l = getline(lln-i+1)
-                if l =~ a:cid
-                        exec strpart(l, stridx(l, a:cid)+strlen(a:cid))
-                endif
-                let i = i-1
-        endwhile
+  let i = &modelines
+  let lln = line("$")
+  if i > lln | let i = lln | endif
+  while i>0
+    let l = getline(lln-i+1)
+    if l =~ a:cid
+     exec strpart(l, stridx(l, a:cid)+strlen(a:cid))
+    endif
+    let i = i-1
+  endwhile
 endfunction
 
 au BufReadPost * :call CustomModeLine("customvim:")
