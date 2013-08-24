@@ -114,3 +114,6 @@ vnoremap <C-Insert> "+y
 map <S-Insert>		"+gP
 
 let g:airline_powerline_fonts = 1
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
