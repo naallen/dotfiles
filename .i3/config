@@ -156,15 +156,15 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	i3bar_command  /usr/bin/i3bar-icons
-        status_command $HOME/.bin/conky-i3bar 
+    status_command $HOME/.bin/conky-i3bar
 	position top
     	colors {
        		background #2c2e2f
       		statusline #e0e0e0
         	focused_workspace	#2c2e2f #2c2e2f #a6e22e
         	inactive_workspace 	#2c2e2f #2c2e2f #a3babf
-		urgent_workspace 	#2c2e2f #2c2e2f #754747
-	}
+			urgent_workspace 	#2c2e2f #2c2e2f #754747
+   }
 }
 
 new_window 1pixel
