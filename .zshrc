@@ -1,10 +1,10 @@
 autoload -Uz compinit promptinit colors add-zsh-hook
-compinit 
+compinit
 promptinit
 colors
 
 setopt always_to_end
-setopt no_case_glob 
+setopt no_case_glob
 setopt complete_in_word
 setopt completealiases
 setopt autocd
@@ -186,6 +186,14 @@ else
   RPROMPT='[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}$(git_super_status)]'
 fi
 
+expand-or-complete-with-dots() {
+  echo -n "\e[31m...\e[0m"
+  zle expand-or-complete
+  zle redisplay
+}
+zle -N expand-or-complete-with-dots
+bindkey "^I" expand-or-complete-with-dots
+
 typeset -A key
 
 key[Home]=${terminfo[khome]}
@@ -205,8 +213,8 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[End]}"   ]]  && bindkey  "${key[End]}"   end-of-line
 [[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
 [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
-[[ -n "${key[Up]}"  ]]  && bindkey  "${key[Up]}"  history-beginning-search-backward 
-[[ -n "${key[Down]}"  ]]  && bindkey  "${key[Down]}"  history-beginning-search-forward 
+[[ -n "${key[Up]}"  ]]  && bindkey  "${key[Up]}"  history-beginning-search-backward
+[[ -n "${key[Down]}"  ]]  && bindkey  "${key[Down]}"  history-beginning-search-forward
 [[ -n "${key[Left]}"  ]]  && bindkey  "${key[Left]}"  backward-char
 [[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
 
@@ -260,7 +268,7 @@ conf() {
 }
 
 alias ls='ls --color'
-[ -e /usr/bin/colordiff ] && alias diff='colordiff'  
+[ -e /usr/bin/colordiff ] && alias diff='colordiff'
 alias grep='grep --color=auto'
 alias more='less'
 alias df='df -h'
@@ -279,7 +287,7 @@ fi
 
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='rm -I'    
+alias rm='rm -I'
 alias ln='ln -i'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
@@ -288,23 +296,23 @@ alias chgrp='chgrp --preserve-root'
 if [ -e /usr/bin/pacaur ]; then INSTALLER="pacaur"; else INSTALLER="pacman"; fi
 
 if [ -e /usr/bin/pacman ]; then
-  alias pac="/usr/bin/${INSTALLER} -S"  
+  alias pac="/usr/bin/${INSTALLER} -S"
   pacu() {
     sudo pacman -Syu
     pacaur -Sua
     sudo pacman -Rs $(pacman -Qtdq)
   }
   alias pacuq="/usr/bin/${INSTALLER} -Syu --noconfirm"
-  alias pacr="sudo /usr/bin/pacman -Rs"   
+  alias pacr="sudo /usr/bin/pacman -Rs"
   alias pacrem="sudo /usr/bin/pacman -Rns"
-  alias pacs="/usr/bin/${INSTALLER} -Ss"  
-  alias paci="/usr/bin/${INSTALLER} -Si"  
+  alias pacs="/usr/bin/${INSTALLER} -Ss"
+  alias paci="/usr/bin/${INSTALLER} -Si"
   alias pacins="sudo /usr/bin/pacman -U"
-  alias paclo="/usr/bin/pacman -Qdt"  
-  alias pacc="sudo /usr/bin/pacman -Scc"  
-  alias paclf="/usr/bin/pacman -Ql"   
-  alias pacexpl="sudo /usr/bin/pacman -D --asexp" 
-  alias pacimpl="sudo /usr/bin/pacman -D --asdep" 
+  alias paclo="/usr/bin/pacman -Qdt"
+  alias pacc="sudo /usr/bin/pacman -Scc"
+  alias paclf="/usr/bin/pacman -Ql"
+  alias pacexpl="sudo /usr/bin/pacman -D --asexp"
+  alias pacimpl="sudo /usr/bin/pacman -D --asdep"
   alias pace="pacman -Qe"
   alias pacq="/usr/bin/${INSTALLER} -S --noconfirm"
   alias pacro='sudo pacman -Rs $(pacman -Qtdq)'
