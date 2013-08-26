@@ -104,15 +104,6 @@ endfunction
 
 au BufReadPost * :call CustomModeLine("customvim:")
 
-" SHIFT-Del are Cut
-vnoremap <S-Del> "+x
-
-" CTRL-Insert are Copy
-vnoremap <C-Insert> "+y
-
-" SHIFT-Insert are Paste
-map <S-Insert>		"+gP
-
 let g:airline_powerline_fonts = 1
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
