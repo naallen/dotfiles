@@ -13,7 +13,6 @@ source /etc/X11/xinit/xinitrc.d/30-dbus
 xrdb -merge ~/.Xresources
 redshift & 
 twmnd &
-synapse -s &
 numlockx &
 thunar --daemon &
 compton -cCb --backend glx --paint-on-overlay --vsync opengl-swc &
