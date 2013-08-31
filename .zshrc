@@ -259,7 +259,7 @@ conf() {
   xinit)  vim ~/.xinitrc ;;
   xresources) vim ~/.Xresources && xrdb ~/.Xresources ;;
   zsh)  vim ~/.zshrc && source ~/.zshrc ;;
-  i3)   vim ~/.i3/config ;;
+  i3)   vim ~/.i3/config && i3-msg reload;;
   compton)  vim ~/.compton.conf ;;
   mutt)   vim ~/.muttrc ;;
   *)  echo "Unknown application: $1" ;;
