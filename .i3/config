@@ -161,11 +161,11 @@ bar {
     status_command $HOME/.bin/conky-i3bar
 	position top
     	colors {
-       		background #2c2e2f
-      		statusline #e0e0e0
-        	focused_workspace	#2c2e2f #2c2e2f #a6e22e
-        	inactive_workspace 	#2c2e2f #2c2e2f #a3babf
-			urgent_workspace 	#2c2e2f #2c2e2f #754747
+       		background #fdfdfd
+      		statusline #363636
+        	focused_workspace	#fdfdfd #fdfdfd #24da24
+        	inactive_workspace 	#fdfdfd #fdfdfd #808080
+			urgent_workspace 	#fdfdfd #fdfdfd #E61919
    }
 }
 
@@ -174,7 +174,7 @@ new_window 1pixel
 for_window [title="synapse"] border none
 
 # class                 border  backgr. text    indicator
-client.focused          #4d679a #5e7175 #e0e0e0 #4d679a
-client.focused_inactive #2c2e2f #262729 #e0e0e0 #2c2e2f
-client.unfocused        #2c2e2f #262729 #e0e0e0 #2c2e2f
-client.urgent           #754747 #754747 #e0e0e0 #754747
+client.focused          #6d8cc7 #5e7175 #363636 #6d8cc7
+client.focused_inactive #fdfdfd #262729 #363636 #fdfdfd
+client.unfocused        #fdfdfd #262729 #363636 #fdfdfd
+client.urgent           #8e4f4f #8e4f4f #363636 #8e4f4f
