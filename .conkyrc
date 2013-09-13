@@ -29,7 +29,7 @@ override_utf8_locale no
 
 # number of cpu samples to average
 # set to 1 to disable averaging
-cpu_avg_samples 2
+cpu_avg_samples 10
 
 # Stuff after 'TEXT' will be formatted on screen
 #TEXT
@@ -50,7 +50,7 @@ TEXT
    "color": "\#808080", "full_text": " ${memperc}% "},  \
   ${if_up wlp3s0} \
 	{"name":"wifi", "icon":"$HOME/.i3/icons/wireless1.xbm", \
-	 "icon_color":"\#24da24","color": "\#24da24", "full_text": " ${wireless_essid wlp3s0} "}, \
+	 "icon_color":"\#24da24","color": "\#24da24", "full_text": " ${wireless_essid wlp3s0} ${wireless_link_qual_perc wlp3s0}"}, \
         {"name":"download", "icon":"$HOME/.i3/icons/downarrow1.xbm", \
 	 "color":"\#808080", "full_text": " ${downspeed wlp3s0}"}, \
         {"name":"upload", "icon":"$HOME/.i3/icons/uparrow1.xbm", \
@@ -60,8 +60,10 @@ TEXT
 	 "icon_color":"\#24da24","color": "\#24da24", "full_text": " ${addr eth0} "}, \
         {"name":"download", "icon":"$HOME/.i3/icons/net_down_03.xbm", \
 	 "color":"\#808080", "full_text": " ${downspeed eth0}"}, \
+        {"name":"upload", "icon":"$HOME/.i3/icons/uparrow1.xbm", \
+	 "color":"\#808080", "full_text": " ${upspeed wlp3s0}"}, \
 	${else}
-	{"name":"nonet", "icon_color": "\#EE6633", "full_text": "", "icon": "$HOME/.i3/icons/net_down_01.xbm"}, \
+	{"name":"nonet", "icon_color": "\#EE6633", "full_text": "No Connection", "icon": "$HOME/.i3/icons/net_down_01.xbm"}, \
 	${endif}\
   ${endif}  \
   {"name": "volume", "icon":"$HOME/.i3/icons/vol1.xbm", \
