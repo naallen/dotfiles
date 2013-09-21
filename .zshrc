@@ -122,12 +122,20 @@ ZSH_THEME_GIT_PROMPT_PREFIX=" "
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
-ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}●"
-ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}✖"
-ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}✚"
 ZSH_THEME_GIT_PROMPT_REMOTE=""
-ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
+if [ "$TERM" = "linux" ]; then
+  ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}s"
+  ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}x"
+  ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}+"
+  ZSH_THEME_GIT_PROMPT_UNTRACKED="..."
+  ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}o"
+else
+  ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}●"
+  ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}✖"
+  ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}✚"
+  ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
+  ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
+fi
 
 export HISTFILE="${HOME}"/.zsh-history
 export HISTSIZE=1000000
@@ -178,7 +186,11 @@ zstyle ':completion:*' users off
 
 [ -e $HOME/.zsh/notifyosd.zsh ] && [ -e /usr/bin/notify-send ] && . $HOME/.zsh/notifyosd.zsh
 
-PROMPT="➤ "
+if [ "$TERM" = "linux" ]; then
+  PROMPT="▶ "
+else
+  PROMPT="➤ "
+fi
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   RPROMPT='[%{%(!.$fg[magenta].$fg[green])%}%2~%{$reset_color%}$(git_super_status)]'
 else
