@@ -143,7 +143,7 @@ export SAVEHIST=$HISTSIZE
 
 source /etc/profile
 
-export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/.bin"
 
 # ruby gems
 export PATH="$PATH:$HOME/.gem/ruby/2.0.0/bin"
