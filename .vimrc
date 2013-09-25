@@ -114,3 +114,5 @@ endif
 
 set backupdir=~/vim/tmp,.
 set directory=~/vim/tmp,.
+
+let g:vimwiki_list = [{'path': '~/vimwiki/html/', 'auto_export': 1}]
