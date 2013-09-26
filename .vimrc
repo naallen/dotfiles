@@ -77,7 +77,6 @@ nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :NERDTree %<CR>
 
 if has ('gui_running')
-  colorscheme jellybeans
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
   set guifont=Terminess\ Powerline\ 8
@@ -104,6 +103,8 @@ endfunction
 
 au BufReadPost * :call CustomModeLine("customvim:")
 
+set background=dark
+colorscheme solarized 
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
