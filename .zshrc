@@ -22,27 +22,6 @@ setopt inc_append_history
 setopt share_history
 setopt prompt_subst
 
-# setting tty colors
-if [ "$TERM" = "linux" ]; then
-  echo -en "\e]P0000000" #black
-  echo -en "\e]P88C8B89" #darkgrey
-  echo -en "\e]P1BE1919" #darkred
-  echo -en "\e]P9DC2F32" #red
-  echo -en "\e]P21AAA13" #darkgreen
-  echo -en "\e]PA5DCE33" #green
-  echo -en "\e]P3FFAA3E" #brown
-  echo -en "\e]PBFADD2D" #yellow
-  echo -en "\e]P43753CC" #darkblue
-  echo -en "\e]PC507CFF" #blue
-  echo -en "\e]P5BE007F" #darkmagenta
-  echo -en "\e]PDE65CD0" #magenta
-  echo -en "\e]P614BDCC" #darkcyan
-  echo -en "\e]PE48F3F3" #cyan
-  echo -en "\e]P7AEAEAE" #lightgrey
-  echo -en "\e]PFDBDDE4" #white
-  clear # default input colours
-fi
-
 bindkey -v
 
 # hooks for git
