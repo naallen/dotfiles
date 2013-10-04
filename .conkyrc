@@ -42,39 +42,22 @@ cpu_avg_samples 10
 
 TEXT
 [${if_mpd_playing}{"name": "mpd", "icon":${if_match "$mpd_status" == "Paused"}"$HOME/.i3/icons/pause1.xbm"${else}"$HOME/.i3/icons/play1.xbm"${endif}, "full_text":" ${mpd_artist} - ${mpd_title} "},${endif}
-  ${if_match "${exec xset q | grep LED | awk '{ print $10 }'}" == "00000001"}{"name": "caps", "icon":"$HOME/.i3/icons/lock4.xbm", "full_text":" "}, ${else} ${if_match "${exec xset q | grep LED | awk '{ print $10 }'}" == "00000003"}{"name": "caps", "icon":"$HOME/.i3/icons/lock4.xbm", "full_text":" "},${endif} ${endif}
-  {"name": "cpu", "icon":"$HOME/.i3/icons/cpu1.xbm", \
-   "color": "\#808080", "full_text": \
-   " ${cpu}% "},  \
-  {"name": "memory", "icon": "$HOME/.i3/icons/mem1.xbm", \
-   "color": "\#808080", "full_text": " ${memperc}% "},  \
-  ${if_up wlp3s0} \
-	{"name":"wifi", "icon":"$HOME/.i3/icons/wireless1.xbm", \
-	 "icon_color":"\#24da24","color": "\#24da24", "full_text": " ${wireless_essid wlp3s0} ${wireless_link_qual_perc wlp3s0}"}, \
-        {"name":"download", "icon":"$HOME/.i3/icons/downarrow1.xbm", \
-	 "color":"\#808080", "full_text": " ${downspeed wlp3s0}"}, \
-        {"name":"upload", "icon":"$HOME/.i3/icons/uparrow1.xbm", \
-	 "color":"\#808080", "full_text": " ${upspeed wlp3s0}"}, \
-  ${else} ${if_up eth0}\
-	{"name":"eth0", "icon":"$HOME/.i3/icons/net_wired.xbm",\
-	 "icon_color":"\#24da24","color": "\#24da24", "full_text": " ${addr eth0} "}, \
-        {"name":"download", "icon":"$HOME/.i3/icons/net_down_03.xbm", \
-	 "color":"\#808080", "full_text": " ${downspeed eth0}"}, \
-        {"name":"upload", "icon":"$HOME/.i3/icons/uparrow1.xbm", \
-	 "color":"\#808080", "full_text": " ${upspeed wlp3s0}"}, \
-	${else}
-	{"name":"nonet", "icon_color": "\#EE6633", "full_text": "No Connection", "icon": "$HOME/.i3/icons/net_down_01.xbm"}, \
-	${endif}\
-  ${endif}  \
-  {"name": "volume", "icon":"$HOME/.i3/icons/vol1.xbm", \
-   "color": "\#808080", "full_text": \
-   " ${exec amixer sget Master | grep Mono: | sed -e 's/[ \t]*Mono: Playback [0-9]* \[\([0-9]*%\)\].*/\1/'} "},  \
-  ${if_empty ${battery BAT0} } ${else}\
-        {"name": "battery", "icon":${if_match "$acpiacadapter" == "off-line"}"$HOME/.i3/icons/batt3full.xbm"${else}"$HOME/.i3/icons/ac_01.xbm"${endif} , \
-         "color":${if_match "$acpiacadapter" == "on-line"} "\#24da24" ${else} ${if_match ${battery_percent BAT0} >= 16} "\#808080" ${else}"\#E61919" ${endif} ${endif}, "full_text": " ${battery_percent BAT0}% "},  \
-  ${endif} \
-  {"name": "time", "icon":"$HOME/.i3/icons/clock2.xbm", \
-   "icon_color": "\#808080", "color": "\#808080", \
-   "full_text": " ${time %d/%m/%y} ${time %H:%M}  "}\
+${if_match "${exec xset q | grep LED | awk '{ print $10 }'}" == "00000001"}{"name": "caps", "icon":"$HOME/.i3/icons/lock4.xbm", "full_text":" "}, ${else} ${if_match "${exec xset q | grep LED | awk '{ print $10 }'}" == "00000003"}{"name": "caps", "icon":"$HOME/.i3/icons/lock4.xbm", "full_text":" "},${endif} ${endif}
+{"name": "cpu", "icon":"$HOME/.i3/icons/cpu1.xbm", "color": "\#808080", "full_text": " ${cpu}% "},
+{"name": "memory", "icon": "$HOME/.i3/icons/mem1.xbm", "color": "\#808080", "full_text": " ${memperc}% "},
+		${if_up wlp3s0}
+{"name":"wifi", "icon":"$HOME/.i3/icons/wireless1.xbm",	"icon_color":"\#24da24","color": "\#24da24", "full_text": " ${wireless_essid wlp3s0} ${wireless_link_qual_perc wlp3s0}"}, \
+				${else} ${if_up eth0}
+{"name":"eth0", "icon":"$HOME/.i3/icons/net_wired.xbm", "icon_color":"\#24da24","color": "\#24da24", "full_text": " ${addr eth0} "},
+		${else}
+{"name":"nonet", "icon_color": "\#EE6633", "full_text": "No Connection", "icon": "$HOME/.i3/icons/net_down_01.xbm"},
+		${endif}
+		${endif}
+{"name": "volume", "icon":"$HOME/.i3/icons/vol1.xbm", "color": "\#808080", "full_text": " ${exec amixer sget Master | grep Mono: | sed -e 's/[ \t]*Mono: Playback [0-9]* \[\([0-9]*%\)\].*/\1/'} "},
+		${if_empty ${battery BAT0} }
+		${else}
+{"name": "battery", "icon":${if_match "$acpiacadapter" == "off-line"}"$HOME/.i3/icons/batt3full.xbm"${else}"$HOME/.i3/icons/ac_01.xbm"${endif}, "color":${if_match "$acpiacadapter" == "on-line"} "\#24da24" ${else} ${if_match ${battery_time BAT0} >= 16} "\#808080" ${else}"\#E61919" ${endif} ${endif}, "full_text": " ${battery_time BAT0} "},
+		${endif}
+{"name": "time", "icon":"$HOME/.i3/icons/clock2.xbm", "icon_color": "\#808080", "color": "\#808080", "full_text": " ${time %d/%m/%y} ${time %H:%M}  "}
 ],
 
