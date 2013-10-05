@@ -107,7 +107,7 @@ bindsym $mod+F6 move container to workspace number 6
 bindsym $mod+F7 move container to workspace number 7
 bindsym $mod+F8 move container to workspace number 8
 bindsym $mod+F9 move container to workspace number 9
-bindsym $mod+F0 move container to workspace number 10
+bindsym $mod+F10 move container to workspace number 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
