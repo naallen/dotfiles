@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/vim-colors-solarized"]
 	path = .vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule ".dir_colors/dircolors-solarized"]
+	path = .dir_colors/dircolors-solarized
+	url = git://github.com/seebi/dircolors-solarized.git
