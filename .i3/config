@@ -115,6 +115,7 @@ bindsym XF86MyComputer exec thunar
 bindsym XF86AudioPrev exec ncmpcpp prev
 bindsym XF86AudioNext exec ncmpcpp next
 bindsym XF86AudioPlay exec ncmpcpp toggle
+bindsym Print exec scrot -e 'mv $f ~/Pictures/Screenshots'
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
