@@ -1,7 +1,7 @@
 # DO NOT EDIT! This file will be overwritten by LXAppearance.
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
-gtk-theme-name="FlatStudioGray"
+gtk-theme-name="FlatStudioDark"
 gtk-icon-theme-name="Faience"
 gtk-font-name="Droid Sans 9"
 gtk-cursor-theme-name="Human"
@@ -14,6 +14,6 @@ gtk-enable-event-sounds=1
 gtk-enable-input-feedback-sounds=1
 gtk-xft-antialias=1
 gtk-xft-hinting=1
-gtk-xft-hintstyle="hintslight"
+gtk-xft-hintstyle="hintfull"
 gtk-xft-rgba="rgb"
 include "/home/nick/.gtkrc-2.0.mine"
