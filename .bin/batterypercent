@@ -1,8 +1,10 @@
 #!/bin/zsh
 battery=$(acpi -b | grep "Battery" | awk '{print $5;}' | cut -c 1-5)
-if [ "$battery" = "until" ]
-then
+if [ "$battery" = "until" ]; then
+	echo "Charged"
+else if [ "$battery" = " " ]; then 
 	echo "Charged"
 else
 	echo $battery
+fi
 fi
