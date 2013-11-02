@@ -154,7 +154,7 @@ bar {
 			background #2c2e2f
             statusline #e0e0e0
             focused_workspace        #2c2e2f #2c2e2f #a6e22e
-            inactive_workspace         #2c2e2f #2c2e2f #a3babf
+            inactive_workspace         #2c2e2f #2c2e2f #808080
             urgent_workspace         #2c2e2f #2c2e2f #754747
    }
 }
@@ -164,7 +164,7 @@ new_window 1pixel
 for_window [title="synapse"] border none
 
 # class                 border  backgr. text    indicator
-client.focused #4d679a #5e7175 #e0e0e0 #4d679a
-client.focused_inactive #2c2e2f #262729 #e0e0e0 #2c2e2f
-client.unfocused #2c2e2f #262729 #e0e0e0 #2c2e2f
-client.urgent #754747 #754747 #e0e0e0 #754747
+client.focused 			#2c2e2f #262729 #e0e0e0 #262729
+client.focused_inactive #2c2e2f #2c2e2f #e0e0e0 #2c2e2f
+client.unfocused 		#2c2e2f #2c2e2f #e0e0e0 #2c2e2f
+client.urgent 			#754747 #754747 #e0e0e0 #754747
