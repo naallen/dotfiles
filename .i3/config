@@ -116,7 +116,7 @@ bindsym XF86AudioPrev exec ncmpcpp prev
 bindsym XF86AudioNext exec ncmpcpp next
 bindsym XF86AudioPlay exec ncmpcpp toggle
 bindsym Print exec scrot -e 'mv $f ~/Pictures/Screenshots'
-bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: '
+bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: ' -f Terminus
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
