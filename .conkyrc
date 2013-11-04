@@ -22,7 +22,7 @@ if_up_strictness address
 
 # Add spaces to keep things from moving about?  This only affects certain objects.
 # use_spacer should have an argument of left, right, or none
-use_spacer left
+use_spacer none
 
 # Force UTF8? note that UTF8 support required XFT
 override_utf8_locale no
@@ -46,7 +46,7 @@ ${if_match "${exec xset q | grep LED | awk '{ print $10 }'}" == "00000001"}{"nam
 {"name": "cpu", "icon":"$HOME/.i3/icons/cpu1.xbm", "color": "\#808080", "full_text": " ${cpu}% "},
 {"name": "memory", "icon": "$HOME/.i3/icons/mem1.xbm", "color": "\#808080", "full_text": " ${memperc}% "},
 		${if_up wlp3s0}
-{"name":"wifi", "icon":"$HOME/.i3/icons/wireless1.xbm",	"icon_color":"\#24da24","color": "\#24da24", "full_text": " ${wireless_essid wlp3s0}${wireless_link_qual_perc wlp3s0}"}, \
+{"name":"wifi", "icon":"$HOME/.i3/icons/wireless1.xbm",	"icon_color":"\#24da24","color": "\#24da24", "full_text": " ${wireless_essid wlp3s0} (${wireless_link_qual_perc wlp3s0}%)"}, \
 				${else} ${if_up eth0}
 {"name":"eth0", "icon":"$HOME/.i3/icons/net_wired.xbm", "icon_color":"\#24da24","color": "\#24da24", "full_text": " ${addr eth0} "},
 		${else}
@@ -56,7 +56,7 @@ ${if_match "${exec xset q | grep LED | awk '{ print $10 }'}" == "00000001"}{"nam
 {"name": "volume", "icon":"$HOME/.i3/icons/vol1.xbm", "color": "\#808080", "full_text": " ${exec amixer sget Master | grep Mono: | sed -e 's/[ \t]*Mono: Playback [0-9]* \[\([0-9]*%\)\].*/\1/'} "},
 		${if_empty ${battery BAT0} }
 		${else}
-{"name": "battery", "icon":${if_match "$acpiacadapter" == "off-line"}"$HOME/.i3/icons/batt3full.xbm"${else}"$HOME/.i3/icons/ac_01.xbm"${endif}, "color":${if_match "$acpiacadapter" == "on-line"} "\#24da24" ${else} ${if_match ${battery_percent BAT0} >= 16} "\#808080" ${else}"\#E61919" ${endif} ${endif}, "full_text": " ${exec $HOME/.bin/batterypercent} "},
+{"name": "battery", "icon":${if_match "$acpiacadapter" == "off-line"}"$HOME/.i3/icons/batt3full.xbm"${else}"$HOME/.i3/icons/ac_01.xbm"${endif}, "color":${if_match "$acpiacadapter" == "on-line"} "\#24da24" ${else} ${if_match ${battery_percent BAT0} >= 16} "\#808080" ${else}"\#E61919" ${endif} ${endif}, "full_text": "$battery_percent% (${exec $HOME/.bin/batterypercent}) "},
 		${endif}
 {"name": "time", "icon":"$HOME/.i3/icons/clock2.xbm", "icon_color": "\#808080", "color": "\#808080", "full_text": " ${time %d/%m/%y} ${time %H:%M}  "}
 ],
