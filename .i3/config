@@ -161,7 +161,7 @@ bar {
 
 new_window 1pixel
 
-for_window [title="synapse"] border none
+#for_window [title="synapse"] border none
 
 # class                 border  backgr. text    indicator
 client.focused 			#2c2e2f #262729 #e0e0e0 #262729
