@@ -321,5 +321,6 @@ alias \#="sudo "
 alias \$=""
 
 alias bc="bc -q"
+alias octave="octave -q"
 
 alias vi="vim"
