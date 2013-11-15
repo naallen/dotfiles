@@ -1,6 +1,7 @@
 set nocompatible
 set spelllang=en_ca
 set number
+set relativenumber
 set whichwrap+=<,>,[,],h,l
 set wrap linebreak
 
