@@ -82,6 +82,10 @@ if has ('gui_running')
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
   set guifont=Terminess\ Powerline\ 8
+  vmap <C-c> "+yi
+  vmap <C-x> "+c
+  vmap <C-v> c<ESC>"+p
+  imap <C-v> <C-r><C-o>+
 endif
 
 set laststatus=2
