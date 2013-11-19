@@ -37,3 +37,6 @@
 [submodule ".dir_colors/dircolors-solarized"]
 	path = .dir_colors/dircolors-solarized
 	url = git://github.com/seebi/dircolors-solarized.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
