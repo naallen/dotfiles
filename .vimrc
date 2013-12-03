@@ -115,9 +115,7 @@ colorscheme solarized
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
-if $TERM != "linux"
-  let g:airline_powerline_fonts = 1
-endif
+source ~/.powerline/powerline/powerline/bindings/vim/plugin/powerline.vim
 
 set backupdir=~/vim/tmp,.
 set directory=~/vim/tmp,.

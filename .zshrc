@@ -30,6 +30,11 @@ add-zsh-hook chpwd chpwd_update_git_vars
 add-zsh-hook preexec preexec_update_git_vars
 add-zsh-hook precmd precmd_update_git_vars
 
+if [ -z $TMUX ];
+then
+  tmux new || tmux attach;
+fi
+
 function preexec_update_git_vars() {
   case "$2" in
     git*)
