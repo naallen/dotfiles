@@ -30,11 +30,6 @@ add-zsh-hook chpwd chpwd_update_git_vars
 add-zsh-hook preexec preexec_update_git_vars
 add-zsh-hook precmd precmd_update_git_vars
 
-if [ -z $TMUX ];
-then
-  tmux new || tmux attach;
-fi
-
 function preexec_update_git_vars() {
   case "$2" in
     git*)
@@ -127,7 +122,7 @@ export SAVEHIST=$HISTSIZE
 
 source /etc/profile
 
-export PATH="$PATH:$HOME/.bin"
+export PATH="$PATH:$HOME/.bin:$HOME/.powerline/scripts"
 
 # ruby gems
 export PATH="$PATH:$HOME/.gem/ruby/2.0.0/bin"
@@ -138,6 +133,11 @@ precmd() {
 
 [ -e ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -e /usr/share/doc/pkgfile/command-not-found.zsh ] && source /usr/share/doc/pkgfile/command-not-found.zsh
+
+if [ -z $TMUX ];
+then
+  tmux new || tmux attach;
+fi
 
 eval `dircolors $HOME/.dir_colors/dircolors-solarized/dircolors.256dark`
 
