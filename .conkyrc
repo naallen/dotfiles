@@ -58,6 +58,6 @@ ${if_match "${exec xset q | grep LED | awk '{ print $10 }'}" == "00000001"}{"nam
 		${else}
 {"name": "battery", "icon":${if_match "$acpiacadapter" == "off-line"}"$HOME/.i3/icons/batt3full.xbm"${else}"$HOME/.i3/icons/ac_01.xbm"${endif}, "color":${if_match "$acpiacadapter" == "on-line"} "\#24da24" ${else} ${if_match ${battery_percent BAT0} >= 16} "\#808080" ${else}"\#E61919" ${endif} ${endif}, "full_text": "$battery_percent% (${exec $HOME/.bin/batterypercent}) "},
 		${endif}
-{"name": "time", "icon_color": "\#808080", "color": "\#808080", "full_text": " ${time %d/%m/%y} ${time %H:%M}  "}
+{"name": "time", "icon_color": "\#808080", "color": "\#FFFFFF", "full_text": " ${time %d/%m/%y} ${time %H:%M}  "}
 ],
 
