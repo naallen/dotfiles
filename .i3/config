@@ -109,8 +109,8 @@ bindsym $mod+Escape exec xkill
 bindsym $mod+L exec i3lock -c 000000
 
 bindsym XF86AudioMicMute exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+ 
-bindsym XF86AudioLowerVolume exec amixer -q set Master 10%- 
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ 
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- 
 bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86Calculator exec speedcrunch
 bindsym XF86MyComputer exec thunar
