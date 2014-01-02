@@ -11,7 +11,7 @@ source /etc/X11/xinit/xinitrc.d/30-dbus
 /usr/lib/systemd/systemd --user &
 
 xrdb -merge ~/.Xresources
-redshift & 
+xflux -l 43.467079 -g -79.714499 &
 twmnd &
 synapse -s &
 numlockx &
@@ -24,4 +24,3 @@ udiskie &
 synclient TouchpadOff=1 &
 
 exec i3 
-
