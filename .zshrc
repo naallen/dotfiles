@@ -288,7 +288,7 @@ if [ -e /usr/bin/pacman ]; then
   alias pac="/usr/bin/${INSTALLER} -S"
   pacu() {
     sudo pacman -Syu
-    pacaur -Sua
+    pacaur -Sua --devel
     sudo pacman -Rs $(pacman -Qtdq)
   }
   alias pacuq="/usr/bin/${INSTALLER} -Syu --noconfirm"
