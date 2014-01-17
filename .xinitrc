@@ -22,5 +22,6 @@ hsetroot -fill ~/Pictures/Wallpapers/Reflection_Wallpaper_2_by_all_one_line.png 
 xset s 60 60 &
 udiskie &
 synclient TouchpadOff=1 &
+~/.bin/lightsOn.sh &
 
 exec i3 
