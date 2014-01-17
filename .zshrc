@@ -282,29 +282,32 @@ alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
+
 if [ -e /usr/bin/pacaur ]; then INSTALLER="pacaur"; else INSTALLER="pacman"; fi
+if [ -e /usr/bin/pacmatic ]; then PACMAN="pacmatic"; fi
+if [ -e /usr/bin/powerpill ]; then export pacman_program="powerpill"; fi
 
 if [ -e /usr/bin/pacman ]; then
   alias pac="/usr/bin/${INSTALLER} -S"
   pacu() {
-    sudo pacman -Syu
+    sudo -E $PACMAN -Syu
     pacaur -Sua --devel
-    sudo pacman -Rs $(pacman -Qtdq)
+    sudo -E $PACMAN -Rs $(pacman -Qtdq)
   }
   alias pacuq="/usr/bin/${INSTALLER} -Syu --noconfirm"
-  alias pacr="sudo /usr/bin/pacman -Rs"
-  alias pacrem="sudo /usr/bin/pacman -Rns"
+  alias pacr="sudo -E /usr/bin/${PACMAN} -Rs"
+  alias pacrem="sudo -E /usr/bin/${PACMAN} -Rns"
   alias pacs="/usr/bin/${INSTALLER} -Ss"
   alias paci="/usr/bin/${INSTALLER} -Si"
-  alias pacins="sudo /usr/bin/pacman -U"
-  alias paclo="/usr/bin/pacman -Qdt"
-  alias pacc="sudo /usr/bin/pacman -Scc"
-  alias paclf="/usr/bin/pacman -Ql"
-  alias pacexpl="sudo /usr/bin/pacman -D --asexp"
-  alias pacimpl="sudo /usr/bin/pacman -D --asdep"
-  alias pace="pacman -Qe"
+  alias pacins="sudo -E /usr/bin/${PACMAN} -U"
+  alias paclo="/usr/bin/${PACMAN} -Qdt"
+  alias pacc="sudo -E /usr/bin/${PACMAN} -Scc"
+  alias paclf="/usr/bin/${PACMAN} -Ql"
+  alias pacexpl="sudo -E /usr/bin/${PACMAN} -D --asexp"
+  alias pacimpl="sudo -E /usr/bin/${PACMAN} -D --asdep"
+  alias pace="${PACMAN} -Qe"
   alias pacq="/usr/bin/${INSTALLER} -S --noconfirm"
-  alias pacro='sudo pacman -Rs $(pacman -Qtdq)'
+  alias pacro='sudo -E ${PACMAN} -Rs $(${PACMAN} -Qtdq)'
   alias pacla='pacman -Qei $(pacman -Qu|cut -d" " -f 1)|awk " BEGIN {FS=\":\"}/^Name/{printf(\"\033[1;36m%s\033[1;37m\", \$2)}/^Description/{print \$2}"'
 fi
 
@@ -320,7 +323,7 @@ alias tarcg="tar cfvz"
 alias \#="sudo "
 alias \$=""
 
-alias bc="bc -q"
+alias bc="bc -ql"
 alias octave="octave -q"
 
 alias vi="vim"
