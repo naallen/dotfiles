@@ -117,6 +117,7 @@ bindsym XF86MyComputer exec thunar
 bindsym XF86AudioPrev exec ncmpcpp prev
 bindsym XF86AudioNext exec ncmpcpp next
 bindsym XF86AudioPlay exec ncmpcpp toggle
+bindsym XF86WebCam exec if xset q | grep "DPMS is Disabled"; then xset +dpms; else xset -dpms; fi
 bindsym Print exec scrot -e 'mv $f ~/Pictures/Screenshots'
 bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: ' -f Terminus
 
