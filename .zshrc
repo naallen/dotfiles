@@ -284,14 +284,14 @@ alias chgrp='chgrp --preserve-root'
 
 
 if [ -e /usr/bin/pacaur ]; then INSTALLER="pacaur"; else INSTALLER="pacman"; fi
-if [ -e /usr/bin/pacmatic ]; then PACMAN="pacmatic"; fi
+if [ -e /usr/bin/pacmatic ]; then PACMAN="pacmatic"; else PACMAN="pacman"; fi
 if [ -e /usr/bin/powerpill ]; then export pacman_program="powerpill"; fi
 
 if [ -e /usr/bin/pacman ]; then
   alias pac="/usr/bin/${INSTALLER} -S"
   pacu() {
     sudo -E $PACMAN -Syu
-    pacaur -Sua --devel
+    if [ -e /usr/bin/pacaur ]; then pacaur -Sua --devel; fi
     sudo -E $PACMAN -Rs $(pacman -Qtdq)
   }
   alias pacuq="/usr/bin/${INSTALLER} -Syu --noconfirm"
