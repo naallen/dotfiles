@@ -18,5 +18,6 @@ URxvt.keysym.C-C: perl:clipboard:copy
 URxvt.keysym.C-V: perl:clipboard:paste
 URxvt.keysym.C-A-V: perl:clipboard:paste_escaped
 URxvt.iso14755 : false
+*TkTheme: clam
 
 Xcursor.theme: Human
