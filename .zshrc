@@ -307,7 +307,7 @@ if [ -e /usr/bin/pacman ]; then
   alias pacimpl="sudo -E /usr/bin/${PACMAN} -D --asdep"
   alias pace="${PACMAN} -Qe"
   alias pacq="/usr/bin/${INSTALLER} -S --noconfirm"
-  alias pacro='sudo -E ${PACMAN} -Rs $(${PACMAN} -Qtdq)'
+  alias pacro='sudo -E pacman -Rs $(pacman -Qtdq)'
   alias pacla='pacman -Qei $(pacman -Qu|cut -d" " -f 1)|awk " BEGIN {FS=\":\"}/^Name/{printf(\"\033[1;36m%s\033[1;37m\", \$2)}/^Description/{print \$2}"'
 fi
 
