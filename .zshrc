@@ -264,7 +264,7 @@ alias df='df -h'
 alias du='du -c -h'
 alias mkdir='mkdir -p -v'
 alias ping='ping -c 5'
-alias copy='rsync -zvrP '
+alias copy='rsync -zvaP '
 
 if [ $UID -ne 0 ]; then
   alias sudo='sudo '
