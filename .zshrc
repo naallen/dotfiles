@@ -327,3 +327,8 @@ alias bc="bc -ql"
 alias octave="octave -q"
 
 alias vi="vim"
+
+#fetch PDB files
+pdbfetch() {
+	wget http://www.rcsb.org/pdb/files/$1.pdb 
+}
