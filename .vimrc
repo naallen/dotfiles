@@ -4,6 +4,7 @@ set number
 set relativenumber
 set whichwrap+=<,>,[,],h,l
 set wrap linebreak
+set nocompatible
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start

@@ -2,7 +2,7 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 gtk-theme-name="FlatStudioDark"
-gtk-icon-theme-name="Faenza-Dark"
+gtk-icon-theme-name="Flattr"
 gtk-font-name="Liberation Sans 10"
 gtk-cursor-theme-name="Human"
 gtk-cursor-theme-size=0
