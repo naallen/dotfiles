@@ -1,8 +1,8 @@
 # DO NOT EDIT! This file will be overwritten by LXAppearance.
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
-gtk-theme-name="FlatStudioDark"
-gtk-icon-theme-name="Flattr"
+gtk-theme-name="FlatStudio"
+gtk-icon-theme-name="Faience"
 gtk-font-name="Liberation Sans 10"
 gtk-cursor-theme-name="Human"
 gtk-cursor-theme-size=0

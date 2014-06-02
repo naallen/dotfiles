@@ -23,5 +23,8 @@ xset s 60 60 &
 udiskie &
 synclient TouchpadOff=1 &
 ~/.bin/lightsOn.sh &
+trackpoint_apply &
 
-exec i3 
+exec gnome-session 
+#exec i3 
+
