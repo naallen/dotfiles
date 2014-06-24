@@ -94,6 +94,8 @@ set laststatus=2
 " Pathogen
 call pathogen#infect()
 
+set modeline
+
 " custom modeline
 function! CustomModeLine(cid)
   let i = &modelines

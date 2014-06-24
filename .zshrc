@@ -292,7 +292,7 @@ if [ -e /usr/bin/pacman ]; then
   alias pac="/usr/bin/${INSTALLER} -S"
   pacu() {
     sudo -E $PACMAN -Syu
-    if [ -e /usr/bin/pacaur ]; then pacaur -Sua --devel; fi
+    if [ -e /usr/bin/pacaur ]; then pacaur -Sua ; fi
     sudo -E $PACMAN -Rs $(pacman -Qtdq)
   }
   alias pacuq="/usr/bin/${INSTALLER} -Syu --noconfirm"

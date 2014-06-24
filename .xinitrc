@@ -25,6 +25,4 @@ synclient TouchpadOff=1 &
 ~/.bin/lightsOn.sh &
 trackpoint_apply &
 
-exec gnome-session 
-#exec i3 
-
+exec i3 
