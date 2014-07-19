@@ -18,7 +18,7 @@ numlockx &
 thunar --daemon &
 unclutter -idle 1 &
 compton --backend glx --paint-on-overlay --vsync opengl-swc &
-hsetroot -fill ~/Pictures/Wallpapers/Reflection_Wallpaper_2_by_all_one_line.png &
+hsetroot -fill ~/Pictures/wallpaper.png &
 xset s 60 60 &
 udiskie &
 synclient TouchpadOff=1 &
