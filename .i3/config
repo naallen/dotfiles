@@ -62,7 +62,9 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space $float 
+
+set $float exec --no-startup-id ~/.bin/compton_shadow_workaround.sh, floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -119,6 +121,8 @@ bindsym XF86AudioNext exec ncmpcpp next
 bindsym XF86AudioPlay exec ncmpcpp toggle
 bindsym XF86WebCam exec xset q | grep -q 'timeout:  60' && xset s off || xset s 60 60
 bindsym XF86Display exec sudo trackpoint_apply
+bindsym XF86MonBrightnessDown exec ~/.bin/lowerbrightness.sh 
+bindsym XF86MonBrightnessUp exec xbacklight +10
 bindsym Print exec scrot -e 'mv $f ~/Pictures/Screenshots'
 bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: ' -f Terminus
 
@@ -157,9 +161,9 @@ bar {
     	colors {
 			background #2c2e2f
             statusline #e0e0e0
-            focused_workspace        #2c2e2f #2c2e2f #a6e22e
-            inactive_workspace         #2c2e2f #2c2e2f #808080
-            urgent_workspace         #2c2e2f #2c2e2f #754747
+            focused_workspace        #2c2e2f #2c2e2f #ffffff
+            inactive_workspace       #2c2e2f #2c2e2f #808080
+            urgent_workspace         #2c2e2f #2c2e2f #900000
    }
 }
 

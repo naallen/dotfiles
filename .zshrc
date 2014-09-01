@@ -253,6 +253,7 @@ conf() {
   i3)   vim ~/.i3/config && i3-msg reload;;
   compton)  vim ~/.compton.conf ;;
   mutt)   vim ~/.muttrc ;;
+  dunst)   vim ~/.dunstrc && killall dunst && dunst -conf ~/.dunstrc ;;
   *)  echo "Unknown application: $1" ;;
   esac
 }

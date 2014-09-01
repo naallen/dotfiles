@@ -82,7 +82,7 @@ nnoremap <F6> :NERDTree %<CR>
 if has ('gui_running')
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
-  set guifont=Terminess\ Powerline\ 8
+  set guifont=Sauce\ Code\ Powerline\ 10
   vmap <C-c> "+yi
   vmap <C-x> "+c
   vmap <C-v> c<ESC>"+p

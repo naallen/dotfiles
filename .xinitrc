@@ -12,7 +12,7 @@ source /etc/X11/xinit/xinitrc.d/30-dbus
 
 xrdb -merge ~/.Xresources
 xflux -l 43.467079 -g -79.714499 &
-twmnd &
+dunst -conf ~/.dunstrc &
 synapse -s &
 numlockx &
 thunar --daemon &
