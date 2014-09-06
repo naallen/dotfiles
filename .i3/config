@@ -157,6 +157,7 @@ mode "resize" {
 bar {
 	i3bar_command  /usr/bin/i3bar-icons
     status_command $HOME/.bin/conky-i3bar
+	font pango:Liberation Sans, Ionicons, Icons 8
 	position top
     	colors {
 			background #2c2e2f
