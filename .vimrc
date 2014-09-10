@@ -126,4 +126,6 @@ endif
 set backupdir=~/vim/tmp,.
 set directory=~/vim/tmp,.
 
+source ~/.vim/toggle.vim
+
 let g:vimwiki_list = [{'path': '~/vimwiki/html/', 'auto_export': 1}]

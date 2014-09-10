@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font xft:Terminus 10px
+font pango:Open Sans Regular, Ionicons, Icons 8
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -157,15 +157,18 @@ mode "resize" {
 bar {
 	i3bar_command  /usr/bin/i3bar-icons
     status_command $HOME/.bin/conky-i3bar
-	font pango:Liberation Sans, Ionicons, Icons 8
+	font pango:Open Sans Regular, Ionicons, Icons 8
 	position top
-    	colors {
-			background #2c2e2f
-            statusline #e0e0e0
-            focused_workspace        #2c2e2f #2c2e2f #ffffff
-            inactive_workspace       #2c2e2f #2c2e2f #808080
-            urgent_workspace         #2c2e2f #2c2e2f #900000
-   }
+	colors {
+        background #2d2d2d
+        statusline #dedede
+        separator #2d2d2d
+
+        focused_workspace  #d64937 #d64937 #dedede
+        active_workspace   #2d2d2d #5f676a #dedede
+        inactive_workspace #2d2d2d #2d2d2d #888888
+        urgent_workspace   #333333 #900000 #ffffff
+    }
 }
 
 new_window 1pixel
@@ -173,10 +176,10 @@ new_window 1pixel
 for_window [title="synapse"] border none
 
 # class                 border  backgr. text    indicator
-client.focused 			#2c2e2f #262729 #e0e0e0 #262729
-client.focused_inactive #2c2e2f #2c2e2f #e0e0e0 #2c2e2f
-client.unfocused 		#2c2e2f #2c2e2f #e0e0e0 #2c2e2f
-client.urgent 			#754747 #754747 #e0e0e0 #754747
+client.focused 			#333333 #333333 #dedede #333333
+client.unfocused 		#2d2d2d #2d2d2d #dedede #2d2d2d
+client.focused_inactive #2d2d2d #2d2d2d #dedede #2d2d2d
+client.urgent 			#383a3b #383a3b #ee0000 #383a3b
 
 exec --no-startup-id i3-msg 'workspace 1:Term; exec /usr/bin/urxvt' 
 exec --no-startup-id i3-msg 'workspace 2:Web; exec /usr/bin/firefox-nightly' 
