@@ -20,7 +20,7 @@ unclutter -idle 1 &
 compton --backend glx --paint-on-overlay --vsync opengl-swc &
 hsetroot -fill ~/Pictures/wallpaper.png &
 xset s 60 60 &
-udiskie &
+udiskie -n -a -s &
 synclient TouchpadOff=1 &
 ~/.bin/lightsOn.sh &
 trackpoint_apply &

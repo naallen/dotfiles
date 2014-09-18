@@ -104,9 +104,9 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "zenity --question --text='Are you sure you want to restart i3?' --default-cancel && i3session save && sudo systemctl restart slim"
 
-bindsym $mod+Escape exec xkill
+bindsym $mod+BackSpace exec xkill
 
 bindsym $mod+L exec i3lock -c 000000
 
@@ -122,7 +122,7 @@ bindsym XF86AudioPlay exec ncmpcpp toggle
 bindsym XF86WebCam exec xset q | grep -q 'timeout:  60' && xset s off || xset s 60 60
 bindsym XF86Display exec sudo trackpoint_apply
 bindsym XF86MonBrightnessDown exec ~/.bin/lowerbrightness.sh 
-bindsym XF86MonBrightnessUp exec xbacklight +10
+bindsym XF86MonBrightnessUp exec xbacklight +5
 bindsym Print exec scrot -e 'mv $f ~/Pictures/Screenshots'
 bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: ' -f Terminus
 
@@ -143,7 +143,7 @@ mode "resize" {
         bindsym Left resize shrink width 10 px or 5 ppt
         bindsym Down resize grow height 10 px or 5 ppt
         bindsym Up resize shrink height 10 px or 5 ppt
-        bindsym Right resize grow width 10 px or 5 ppt
+        bindsym Right resize grow width 10 px or 5 pp
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -181,6 +181,9 @@ client.unfocused 		#2d2d2d #2d2d2d #dedede #2d2d2d
 client.focused_inactive #2d2d2d #2d2d2d #dedede #2d2d2d
 client.urgent 			#383a3b #383a3b #ee0000 #383a3b
 
-exec --no-startup-id i3-msg 'workspace 1:Term; exec /usr/bin/urxvt' 
-exec --no-startup-id i3-msg 'workspace 2:Web; exec /usr/bin/firefox-nightly' 
-exec --no-startup-id i3-msg 'workspace 10:Mail; exec /usr/bin/thunderbird' 
+for_window [class="Catfish"] floating enable
+
+exec --no-startup-id [ ! -e ~/.i3/session ] && i3-msg 'workspace 1:Term; exec /usr/bin/urxvt' 
+exec --no-startup-id [ ! -e ~/.i3/session ] && i3-msg 'workspace 2:Web; exec /usr/bin/firefox-nightly' 
+exec --no-startup-id [ ! -e ~/.i3/session ] && i3-msg 'workspace 10:Mail; exec /usr/bin/thunderbird' 
+exec --no-startup-id [ -e ~/.i3/session ] && i3session restore

@@ -129,3 +129,7 @@ set directory=~/vim/tmp,.
 source ~/.vim/toggle.vim
 
 let g:vimwiki_list = [{'path': '~/vimwiki/html/', 'auto_export': 1}]
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set smartindent
