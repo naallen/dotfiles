@@ -120,7 +120,7 @@ export HISTFILE="${HOME}"/.zsh-history
 export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
 
-export PAGER=~/bin/vimpager
+export PAGER=/bin/vimpager
 alias less=$PAGER
 alias zless=$PAGER 
 

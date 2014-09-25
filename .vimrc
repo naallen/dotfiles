@@ -6,6 +6,29 @@ set whichwrap+=<,>,[,],h,l
 set wrap linebreak
 set nocompatible
 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'sjl/gundo.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'vim-latex/vim-latex'
+Plugin 'xolox/vim-misc'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'xolox/vim-notes'
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'vim-scripts/vimwiki'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+let g:EclimCompletionMethod = 'omnifunc'
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -80,9 +103,6 @@ nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :NERDTree %<CR>
 
 set laststatus=2
-
-" Pathogen
-call pathogen#infect()
 
 set background=dark
 colorscheme solarized 
