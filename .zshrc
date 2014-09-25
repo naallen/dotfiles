@@ -127,6 +127,9 @@ export PATH="$PATH:$HOME/.bin:$HOME/.powerline/scripts"
 # ruby gems
 export PATH="$PATH:$HOME/.gem/ruby/2.0.0/bin"
 
+export PANEL_FIFO="/tmp/panel-fifo"
+export PATH="$PATH:$HOME/.config/bspwm"
+
 precmd() {
   [[ $history[$[ HISTCMD -1 ]] == *(pacaur)* ]] && rehash
 }

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
   for f in /etc/X11/xinit/xinitrc.d/*; do
@@ -7,6 +7,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 source /etc/X11/xinit/xinitrc.d/30-dbus
+export PATH="$PATH:$HOME/.config/bspwm"
 
 /usr/lib/systemd/systemd --user &
 
@@ -24,5 +25,8 @@ udiskie -n -a -s &
 synclient TouchpadOff=1 &
 ~/.bin/lightsOn.sh &
 trackpoint_apply &
+#sxhkd &
+#panel &
 
-exec i3 
+exec i3
+#exec bspwm 

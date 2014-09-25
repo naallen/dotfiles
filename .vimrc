@@ -79,7 +79,17 @@ endif
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :NERDTree %<CR>
 
+set laststatus=2
+
+" Pathogen
+call pathogen#infect()
+
+set background=dark
+colorscheme solarized 
+
 if has ('gui_running')
+  colorscheme molokai
+  set spell
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
   set guifont=Sauce\ Code\ Powerline\ 10
@@ -88,11 +98,6 @@ if has ('gui_running')
   vmap <C-v> c<ESC>"+p
   imap <C-v> <C-r><C-o>+
 endif
-
-set laststatus=2
-
-" Pathogen
-call pathogen#infect()
 
 set modeline
 
@@ -112,8 +117,6 @@ endfunction
 
 au BufReadPost * :call CustomModeLine("customvim:")
 
-set background=dark
-colorscheme solarized 
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
