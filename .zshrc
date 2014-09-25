@@ -120,6 +120,10 @@ export HISTFILE="${HOME}"/.zsh-history
 export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
 
+export PAGER=~/bin/vimpager
+alias less=$PAGER
+alias zless=$PAGER 
+
 source /etc/profile
 
 export PATH="$PATH:$HOME/.bin:$HOME/.powerline/scripts"
