@@ -112,7 +112,7 @@ if has ('gui_running')
   set spell
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
-  set guifont=Sauce\ Code\ Powerline\ 10
+  set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 9 
   vmap <C-c> "+yi
   vmap <C-x> "+c
   vmap <C-v> c<ESC>"+p
