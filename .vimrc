@@ -23,7 +23,8 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'xolox/vim-notes'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'vim-scripts/vimwiki'
-
+Plugin 'tomasr/molokai'
+Plugin 'colorsupport.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -105,14 +106,14 @@ nnoremap <F6> :NERDTree %<CR>
 set laststatus=2
 
 set background=dark
-colorscheme solarized 
+colorscheme molokai 
 
 if has ('gui_running')
   colorscheme molokai
   set spell
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
-  set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 9 
+  set guifont=Consolas\ for\ Powerline\ 9 
   vmap <C-c> "+yi
   vmap <C-x> "+c
   vmap <C-v> c<ESC>"+p
