@@ -24,7 +24,7 @@ Plugin 'xolox/vim-notes'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'vim-scripts/vimwiki'
 Plugin 'tomasr/molokai'
-Plugin 'colorsupport.vim'
+"Plugin 'colorsupport.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -119,6 +119,9 @@ if has ('gui_running')
   vmap <C-v> c<ESC>"+p
   imap <C-v> <C-r><C-o>+
 endif
+
+let g:rehash256 = 1
+set background=dark
 
 set modeline
 
