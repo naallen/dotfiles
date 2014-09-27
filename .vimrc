@@ -102,6 +102,7 @@ endif
 
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :NERDTree %<CR>
+noremap <Leader>n :NERDTreeToggle<cr>
 
 set laststatus=2
 
@@ -113,13 +114,14 @@ if has ('gui_running')
   set spell
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
-  set guifont=Consolas\ for\ Powerline\ 9 
+  set guifont=Monaco\ for\ Powerline\ 8 
   vmap <C-c> "+yi
   vmap <C-x> "+c
   vmap <C-v> c<ESC>"+p
   imap <C-v> <C-r><C-o>+
 endif
 
+let g:airline_powerline_fonts = 1
 let g:rehash256 = 1
 set background=dark
 
@@ -160,3 +162,6 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set smartindent
+
+set encoding=utf-8
+let g:Powerline_symbols="fancy"
