@@ -24,6 +24,8 @@ Plugin 'xolox/vim-notes'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'vim-scripts/vimwiki'
 Plugin 'tomasr/molokai'
+Plugin 'freitass/todo.txt-vim'
+
 "Plugin 'colorsupport.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
