@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+scrot /tmp/lock.png && mogrify -scale 5% -scale 2000% /tmp/lock.png && i3lock -i /tmp/lock.png -e

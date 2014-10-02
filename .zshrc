@@ -135,7 +135,7 @@ export PANEL_FIFO="/tmp/panel-fifo"
 export PATH="$PATH:$HOME/.config/bspwm"
 
 precmd() {
-  [[ $history[$[ HISTCMD -1 ]] == *(pacaur)* ]] && rehash
+  [[ $history[$[ HISTCMD -1 ]] == *(pacmatic)* ]] && rehash
 }
 
 [ -e ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
