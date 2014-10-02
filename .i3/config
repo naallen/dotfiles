@@ -108,7 +108,7 @@ bindsym $mod+Shift+e exec "zenity --question --text='Are you sure you want to re
 
 bindsym $mod+BackSpace exec xkill
 
-bindsym $mod+L exec scrot /tmp/lock.png && i3lock -i /tmp/lock.png && convert /tmp/lock.png -blur 0x20 /tmp/lock.png && i3lock -i /tmp/lock.png
+bindsym $mod+L exec scrot /tmp/lock.png && mogrify -scale 5% -scale 2000% /tmp/lock.png && i3lock -i /tmp/lock.png -e
 
 bindsym XF86AudioMicMute exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ 
