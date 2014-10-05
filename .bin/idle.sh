@@ -8,13 +8,13 @@ pollingRate=2
 homeNetwork=$(cat ~/.homenetwork)
 
 while true; do
-    idleTimeMillis=$(~/.bin/getIdle)
+    idleTimeMillis=$(xprintidle)
     echo $idleTimeMillis  # just for debug purposes.
 
-    if [[ $idleTimeMillis -gt $idleStageOne && $idleone = false  ]] ; then
+    if [[ $idleTimeMillis -gt $idleStageOne && $idleone = false && ! -a ~/.screenlock ]] ; then
         echo "idle stage one"
         echo "$(xbacklight -get) + 1" | bc > ~/.backlight
-        xbacklight -set 1 -time 3000 -steps 30 & 
+        xbacklight -set 3 -time 5000 -steps 50 & 
         idleone=true
         pollingRate=0.25
     fi

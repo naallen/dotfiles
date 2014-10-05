@@ -23,7 +23,7 @@ hsetroot -fill ~/Pictures/wallpaper.png &
 ~/.bin/idle.sh &
 udiskie -n -a -s &
 synclient TouchpadOff=1 &
-~/.bin/lightsOn.sh &
+~/.bin/lightsOn.sh 50 &
 trackpoint_apply &
 #sxhkd &
 #panel &
