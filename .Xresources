@@ -7,10 +7,11 @@ URxvt.url-launcher:      /usr/bin/firefox-nightly
 URxvt.matcher.button:   1
 URxvt.charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 URxvt.perl-ext-common:  default,matcher,vtwheel,clipboard
-URxvt.font: xft:Monaco for Powerline:size=8
+*font: xft:Monaco for Powerline:size=8
+UXTerm*faceName: xft:Monaco for Powerline:size=8
+UXTerm*faceSize: 8
 URxvt.italicFont: xft:Monaco for Powerline:italic:size=8
 URxvt.geometry: 80x25
-URxvt.letterSpace: -1
 URxvt.scrollBar:        false
 URxvt.scrollBar_right:        true
 URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/Terminal.svg

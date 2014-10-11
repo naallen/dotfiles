@@ -165,5 +165,17 @@ set tabstop=4
 set shiftwidth=4
 set smartindent
 
+if &term =~ 'rxvt-unicode-256color'
+  " solid underscore
+  let &t_SI .= "\<Esc>[4 q"
+  " solid block
+  let &t_EI .= "\<Esc>[2 q"
+  " 1 or 0 -> blinking block
+  " 3 -> blinking underscore
+  " Recent versions of xterm (282 or above) also support
+  " 5 -> blinking vertical bar
+  " 6 -> solid vertical bar
+endif
+
 set encoding=utf-8
 let g:Powerline_symbols="fancy"

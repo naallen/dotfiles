@@ -20,7 +20,7 @@ thunar --daemon &
 unclutter -idle 1 &
 compton --backend glx --paint-on-overlay --vsync opengl-swc &
 hsetroot -fill ~/Pictures/wallpaper.png &
-~/.bin/idle.sh &
+~/.bin/idle.sh 45000 60000 &
 udiskie -n -a -s &
 synclient TouchpadOff=1 &
 ~/.bin/lightsOn.sh 50 &

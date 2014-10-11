@@ -31,67 +31,67 @@ add-zsh-hook preexec preexec_update_git_vars
 add-zsh-hook precmd precmd_update_git_vars
 
 function preexec_update_git_vars() {
-  case "$2" in
+case "$2" in
     git*)
-    __EXECUTED_GIT_COMMAND=1
-    ;;
-  esac
+        __EXECUTED_GIT_COMMAND=1
+        ;;
+esac
 }
 
 function precmd_update_git_vars() {
-  if [ -n "$__EXECUTED_GIT_COMMAND" ] || [ -n "$ZSH_THEME_GIT_PROMPT_NOCACHE" ]; then
+if [ -n "$__EXECUTED_GIT_COMMAND" ] || [ -n "$ZSH_THEME_GIT_PROMPT_NOCACHE" ]; then
     update_current_git_vars
     unset __EXECUTED_GIT_COMMAND
-  fi
+fi
 }
 
 function chpwd_update_git_vars() {
-  update_current_git_vars
+update_current_git_vars
 }
 
 function update_current_git_vars() {
-  unset __CURRENT_GIT_STATUS
+unset __CURRENT_GIT_STATUS
 
-  local gitstatus="$__GIT_PROMPT_DIR/gitstatus.py"
-  _GIT_STATUS=`python3 ${gitstatus}`
-  __CURRENT_GIT_STATUS=("${(@f)_GIT_STATUS}")
-  GIT_BRANCH=$__CURRENT_GIT_STATUS[1]
-  GIT_REMOTE=$__CURRENT_GIT_STATUS[2]
-  GIT_STAGED=$__CURRENT_GIT_STATUS[3]
-  GIT_CONFLICTS=$__CURRENT_GIT_STATUS[4]
-  GIT_CHANGED=$__CURRENT_GIT_STATUS[5]
-  GIT_UNTRACKED=$__CURRENT_GIT_STATUS[6]
-  GIT_CLEAN=$__CURRENT_GIT_STATUS[7]
+local gitstatus="$__GIT_PROMPT_DIR/gitstatus.py"
+_GIT_STATUS=`python3 ${gitstatus}`
+__CURRENT_GIT_STATUS=("${(@f)_GIT_STATUS}")
+GIT_BRANCH=$__CURRENT_GIT_STATUS[1]
+GIT_REMOTE=$__CURRENT_GIT_STATUS[2]
+GIT_STAGED=$__CURRENT_GIT_STATUS[3]
+GIT_CONFLICTS=$__CURRENT_GIT_STATUS[4]
+GIT_CHANGED=$__CURRENT_GIT_STATUS[5]
+GIT_UNTRACKED=$__CURRENT_GIT_STATUS[6]
+GIT_CLEAN=$__CURRENT_GIT_STATUS[7]
 }
 
 
 git_super_status() {
-  precmd_update_git_vars
-  if [ -n "$__CURRENT_GIT_STATUS" ]; then
-    STATUS="($GIT_BRANCH"
-    STATUS="$ZSH_THEME_GIT_PROMPT_PREFIX$ZSH_THEME_GIT_PROMPT_BRANCH$GIT_BRANCH%{${reset_color}%}"
-    if [ -n "$GIT_REMOTE" ]; then
-      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_REMOTE$GIT_REMOTE%{${reset_color}%}"
+    precmd_update_git_vars
+    if [ -n "$__CURRENT_GIT_STATUS" ]; then
+        STATUS="($GIT_BRANCH"
+        STATUS="$ZSH_THEME_GIT_PROMPT_PREFIX$ZSH_THEME_GIT_PROMPT_BRANCH$GIT_BRANCH%{${reset_color}%}"
+        if [ -n "$GIT_REMOTE" ]; then
+            STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_REMOTE$GIT_REMOTE%{${reset_color}%}"
+        fi
+        STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_SEPARATOR"
+        if [ "$GIT_STAGED" -ne "0" ]; then
+            STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_STAGED$GIT_STAGED%{${reset_color}%}"
+        fi
+        if [ "$GIT_CONFLICTS" -ne "0" ]; then
+            STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CONFLICTS$GIT_CONFLICTS%{${reset_color}%}"
+        fi
+        if [ "$GIT_CHANGED" -ne "0" ]; then
+            STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CHANGED$GIT_CHANGED%{${reset_color}%}"
+        fi
+        if [ "$GIT_UNTRACKED" -ne "0" ]; then
+            STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNTRACKED%{${reset_color}%}"
+        fi
+        if [ "$GIT_CLEAN" -eq "1" ]; then
+            STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CLEAN"
+        fi
+        STATUS="$STATUS%{${reset_color}%}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+        echo "$STATUS"
     fi
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_SEPARATOR"
-    if [ "$GIT_STAGED" -ne "0" ]; then
-      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_STAGED$GIT_STAGED%{${reset_color}%}"
-    fi
-    if [ "$GIT_CONFLICTS" -ne "0" ]; then
-      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CONFLICTS$GIT_CONFLICTS%{${reset_color}%}"
-    fi
-    if [ "$GIT_CHANGED" -ne "0" ]; then
-      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CHANGED$GIT_CHANGED%{${reset_color}%}"
-    fi
-    if [ "$GIT_UNTRACKED" -ne "0" ]; then
-      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNTRACKED%{${reset_color}%}"
-    fi
-    if [ "$GIT_CLEAN" -eq "1" ]; then
-      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CLEAN"
-    fi
-    STATUS="$STATUS%{${reset_color}%}$ZSH_THEME_GIT_PROMPT_SUFFIX"
-    echo "$STATUS"
-  fi
 }
 
 update_current_git_vars
@@ -103,17 +103,17 @@ ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
 ZSH_THEME_GIT_PROMPT_REMOTE=""
 if [ "$TERM" = "linux" ]; then
-  ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}s"
-  ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}x"
-  ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}+"
-  ZSH_THEME_GIT_PROMPT_UNTRACKED="..."
-  ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}o"
+    ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}s"
+    ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}x"
+    ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}+"
+    ZSH_THEME_GIT_PROMPT_UNTRACKED="..."
+    ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}o"
 else
-  ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}●"
-  ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}✖"
-  ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}✚"
-  ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
-  ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
+    ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}●"
+    ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}✖"
+    ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}✚"
+    ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
+    ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
 fi
 
 export HISTFILE="${HOME}"/.zsh-history
@@ -135,7 +135,7 @@ export PANEL_FIFO="/tmp/panel-fifo"
 export PATH="$PATH:$HOME/.config/bspwm"
 
 precmd() {
-  [[ $history[$[ HISTCMD -1 ]] == *(pacmatic)* ]] && rehash
+    [[ $history[$[ HISTCMD -1 ]] == *(pacmatic)* ]] && rehash
 }
 
 [ -e ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -156,13 +156,29 @@ zstyle ':completion:*' menu select
 [ -r ~/.ssh/config ] && _ssh_config=($(cat ~/.ssh/config | sed -ne 's/Host[=\t ]//p')) || _ssh_config=()
 [ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
 hosts=(
-  "$_ssh_config[@]"
-  "$_global_ssh_hosts[@]"
-  "$_ssh_hosts[@]"
+"$_ssh_config[@]"
+"$_global_ssh_hosts[@]"
+"$_ssh_hosts[@]"
 # "$_etc_hosts[@]"
-  "$HOST"
-  localhost
+"$HOST"
+localhost
 )
+
+echo -en "\033[4 q"
+# change cursor colour depending on vi mode
+zle-keymap-select () {
+    if [ "$TERM" = "rxvt-unicode-256color" ]; then
+        if [ $KEYMAP = vicmd ]; then
+            echo -en "\033[2 q"
+        else
+            echo -en "\033[4 q"    
+        fi
+    fi
+}; zle -N zle-keymap-select
+zle-line-init () {
+    zle -K viins
+    echo -en "\033[4 q"
+}; zle -N zle-line-init
 
 zstyle ':completion:*:hosts' hosts $hosts
 zstyle ':completion:*' users off
@@ -172,20 +188,20 @@ zstyle ':completion:*' users off
 [ -e $HOME/.zsh/notifyosd.zsh ] && [ -e /usr/bin/notify-send ] && . $HOME/.zsh/notifyosd.zsh
 
 if [ "$TERM" = "linux" ]; then
-  PROMPT="▶ "
+    PROMPT="▶ "
 else
-  PROMPT="➤ "
+    PROMPT="➤ "
 fi
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  RPROMPT='[%{%(!.$fg[magenta].$fg[green])%}%2~%{$reset_color%}$(git_super_status)]'
+    RPROMPT='[%{%(!.$fg[magenta].$fg[green])%}%2~%{$reset_color%}$(git_super_status)]'
 else
-  RPROMPT='[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}$(git_super_status)]'
+    RPROMPT='[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}$(git_super_status)]'
 fi
 
 expand-or-complete-with-dots() {
-  echo -n "\e[31m...\e[0m"
-  zle expand-or-complete
-  zle redisplay
+    echo -n "\e[31m...\e[0m"
+    zle expand-or-complete
+    zle redisplay
 }
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
@@ -217,52 +233,52 @@ key[PageDown]=${terminfo[knp]}
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-  function zle-line-init () {
-  printf '%s' ${terminfo[smkx]}
-  }
-  function zle-line-finish () {
-  printf '%s' ${terminfo[rmkx]}
+    function zle-line-init () {
+    printf '%s' ${terminfo[smkx]}
+}
+function zle-line-finish () {
+printf '%s' ${terminfo[rmkx]}
   }
   zle -N zle-line-init
   zle -N zle-line-finish
 fi
 
 extract () {
-  if [ -f $1 ] ; then
-   case $1 in
-     *.tar.bz2) tar xvjf $1 ;;
-     *.tar.gz) tar xvzf $1 ;;
-	 *.tar.xz) tar -x --xz -f $1 ;;
-     *.bz2) bunzip2 $1 ;;
-     *.rar) rar x $1 ;;
-     *.gz) gunzip $1 ;;
-     *.tar) tar xvf $1 ;;
-     *.tbz2) tar xvjf $1 ;;
-     *.tgz) tar xvzf $1 ;;
-     *.zip) unzip $1 ;;
-     *.Z) uncompress $1 ;;
-     *.7z) 7z x $1 ;;
-     *) echo "don't know how to extract '$1′…" ;;
-     esac
-   else
-     echo "'$1′ is not a valid file!"
-  fi
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2) tar xvjf $1 ;;
+            *.tar.gz) tar xvzf $1 ;;
+            *.tar.xz) tar -x --xz -f $1 ;;
+            *.bz2) bunzip2 $1 ;;
+            *.rar) rar x $1 ;;
+            *.gz) gunzip $1 ;;
+            *.tar) tar xvf $1 ;;
+            *.tbz2) tar xvjf $1 ;;
+            *.tgz) tar xvzf $1 ;;
+            *.zip) unzip $1 ;;
+            *.Z) uncompress $1 ;;
+            *.7z) 7z x $1 ;;
+            *) echo "don't know how to extract '$1′…" ;;
+        esac
+    else
+        echo "'$1′ is not a valid file!"
+    fi
 }
 
 conf() {
-  case $1 in
-  conky)  vim ~/.conkyrc ;;
-  pacman)   sudo vim /etc/pacman.conf ;;
-  vim)  vim ~/.vimrc ;;
-  xinit)  vim ~/.xinitrc ;;
-  xresources) vim ~/.Xresources && xrdb ~/.Xresources ;;
-  zsh)  vim ~/.zshrc && source ~/.zshrc ;;
-  i3)   vim ~/.i3/config && i3-msg reload;;
-  compton)  vim ~/.compton.conf ;;
-  mutt)   vim ~/.muttrc ;;
-  dunst)   vim ~/.dunstrc && killall dunst && dunst -conf ~/.dunstrc ;;
-  *)  echo "Unknown application: $1" ;;
-  esac
+    case $1 in
+        conky)  vim ~/.conkyrc ;;
+        pacman)   sudo vim /etc/pacman.conf ;;
+        vim)  vim ~/.vimrc ;;
+        xinit)  vim ~/.xinitrc ;;
+        xresources) vim ~/.Xresources && xrdb ~/.Xresources ;;
+        zsh)  vim ~/.zshrc && source ~/.zshrc ;;
+        i3)   vim ~/.i3/config && i3-msg reload;;
+        compton)  vim ~/.compton.conf ;;
+        mutt)   vim ~/.muttrc ;;
+        dunst)   vim ~/.dunstrc && killall dunst && dunst -conf ~/.dunstrc ;;
+        *)  echo "Unknown application: $1" ;;
+    esac
 }
 
 alias ls='ls --color'
@@ -276,11 +292,11 @@ alias ping='ping -c 5'
 alias copy='rsync -zvaP '
 
 if [ $UID -ne 0 ]; then
-  alias sudo='sudo '
-  alias scat='sudo cat'
-  alias root='sudo su'
-  alias reboot='sudo reboot'
-  alias halt='sudo halt'
+    alias sudo='sudo '
+    alias scat='sudo cat'
+    alias root='sudo su'
+    alias reboot='sudo reboot'
+    alias halt='sudo halt'
 fi
 
 alias cp='cp -i'
@@ -297,27 +313,27 @@ if [ -e /usr/bin/pacmatic ]; then PACMAN="pacmatic"; else PACMAN="pacman"; fi
 if [ -e /usr/bin/powerpill ]; then export pacman_program="powerpill"; fi
 
 if [ -e /usr/bin/pacman ]; then
-  alias pac="/usr/bin/${INSTALLER} -S"
-  pacu() {
-    sudo -E $PACMAN -Syu
-    if [ -e /usr/bin/pacaur ]; then pacaur -Sua ; fi
-    sudo -E $PACMAN -Rs $(pacman -Qtdq)
-  }
-  alias pacuq="/usr/bin/${INSTALLER} -Syu --noconfirm"
-  alias pacr="sudo -E /usr/bin/${PACMAN} -Rs"
-  alias pacrem="sudo -E /usr/bin/${PACMAN} -Rns"
-  alias pacs="/usr/bin/${INSTALLER} -Ss"
-  alias paci="/usr/bin/${INSTALLER} -Si"
-  alias pacins="sudo -E /usr/bin/${PACMAN} -U"
-  alias paclo="/usr/bin/${PACMAN} -Qdt"
-  alias pacc="sudo -E /usr/bin/${PACMAN} -Scc"
-  alias paclf="/usr/bin/${PACMAN} -Ql"
-  alias pacexpl="sudo -E /usr/bin/${PACMAN} -D --asexp"
-  alias pacimpl="sudo -E /usr/bin/${PACMAN} -D --asdep"
-  alias pace="${PACMAN} -Qe"
-  alias pacq="/usr/bin/${INSTALLER} -S --noconfirm"
-  alias pacro='sudo -E pacman -Rs $(pacman -Qtdq)'
-  alias pacla='pacman -Qei $(pacman -Qu|cut -d" " -f 1)|awk " BEGIN {FS=\":\"}/^Name/{printf(\"\033[1;36m%s\033[1;37m\", \$2)}/^Description/{print \$2}"'
+    alias pac="/usr/bin/${INSTALLER} -S"
+    pacu() {
+        sudo -E $PACMAN -Syu
+        if [ -e /usr/bin/pacaur ]; then pacaur -Sua ; fi
+        sudo -E $PACMAN -Rs $(pacman -Qtdq)
+    }
+    alias pacuq="/usr/bin/${INSTALLER} -Syu --noconfirm"
+    alias pacr="sudo -E /usr/bin/${PACMAN} -Rs"
+    alias pacrem="sudo -E /usr/bin/${PACMAN} -Rns"
+    alias pacs="/usr/bin/${INSTALLER} -Ss"
+    alias paci="/usr/bin/${INSTALLER} -Si"
+    alias pacins="sudo -E /usr/bin/${PACMAN} -U"
+    alias paclo="/usr/bin/${PACMAN} -Qdt"
+    alias pacc="sudo -E /usr/bin/${PACMAN} -Scc"
+    alias paclf="/usr/bin/${PACMAN} -Ql"
+    alias pacexpl="sudo -E /usr/bin/${PACMAN} -D --asexp"
+    alias pacimpl="sudo -E /usr/bin/${PACMAN} -D --asdep"
+    alias pace="${PACMAN} -Qe"
+    alias pacq="/usr/bin/${INSTALLER} -S --noconfirm"
+    alias pacro='sudo -E pacman -Rs $(pacman -Qtdq)'
+    alias pacla='pacman -Qei $(pacman -Qu|cut -d" " -f 1)|awk " BEGIN {FS=\":\"}/^Name/{printf(\"\033[1;36m%s\033[1;37m\", \$2)}/^Description/{print \$2}"'
 fi
 
 export WINEARCH=win32
@@ -339,5 +355,5 @@ alias vi="vim"
 
 #fetch PDB files
 getpdb() {
-	wget http://www.rcsb.org/pdb/files/$1.pdb 
+    wget http://www.rcsb.org/pdb/files/$1.pdb 
 }
