@@ -17,7 +17,6 @@ dunst -conf ~/.dunstrc &
 synapse -s &
 numlockx &
 thunar --daemon &
-unclutter -idle 1 &
 compton --backend glx --paint-on-overlay --vsync opengl-swc &
 hsetroot -fill ~/Pictures/wallpaper.png &
 ~/.bin/idle.sh 45000 60000 &

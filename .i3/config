@@ -122,29 +122,29 @@ bindsym XF86WebCam exec xset q | grep -q 'timeout:  60' && xset s off || xset s 
 bindsym XF86Display exec sudo trackpoint_apply
 bindsym XF86MonBrightnessDown exec ~/.bin/lowerbrightness.sh 
 bindsym XF86MonBrightnessUp exec xbacklight +5
-bindsym Print exec scrot -e 'mv $f ~/Pictures/Screenshots'
+bindsym Print exec shutter -s
 bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: ' -f Terminus
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
+# same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 5 ppt
         bindsym Down resize grow height 10 px or 5 ppt
         bindsym Up resize shrink height 10 px or 5 ppt
         bindsym Right resize grow width 10 px or 5 pp
 
-        # back to normal: Enter or Escape
+# back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -154,20 +154,21 @@ mode "resize" {
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	i3bar_command  /usr/bin/i3bar-icons
-    status_command $HOME/.bin/conky-i3bar
-	font pango:Open Sans Regular, Ionicons, Icons 8
-	position top
-	colors {
-        background #2d2d2d
-        statusline #dedede
-        separator #2d2d2d
+    i3bar_command  /usr/bin/i3bar-icons
+        status_command $HOME/.bin/conky-i3bar
+        font pango:Open Sans Regular, Ionicons, Icons 8
+        position top
+        workspace_buttons yes
+        colors {
+            separator #2d2d2d
 
-        focused_workspace  #d64937 #d64937 #dedede
-        active_workspace   #2d2d2d #5f676a #dedede
-        inactive_workspace #2d2d2d #2d2d2d #888888
-        urgent_workspace   #333333 #900000 #ffffff
-    }
+                background #101010
+                statusline #999999
+                focused_workspace #825969 #191919
+                active_workspace #825969 #101010
+                inactive_workspace #9a878f #191919
+                urgent_workspace #2e3436 #9a878f
+        }
 }
 
 new_window 1pixel
@@ -175,15 +176,18 @@ new_window 1pixel
 for_window [title="synapse"] border none
 
 # class                 border  backgr. text    indicator
-client.focused 			#333333 #333333 #dedede #333333
-client.unfocused 		#2d2d2d #2d2d2d #dedede #2d2d2d
-client.focused_inactive #2d2d2d #2d2d2d #dedede #2d2d2d
-client.urgent 			#383a3b #383a3b #ee0000 #383a3b
+client.focused               #121212 #101010 #9e8a8e
+client.focused_inactive #101010 #191919 #999999
+client.unfocused           #101010 #191919 #999999
+client.urgent                 #cd989a #cd989a #2e3436
+
+client.background           #1d1d1d
+
 
 for_window [class="Catfish"] floating enable
-for_window [title="PyMOL Viewer"] split v 
-for_window [title="PyMOL Viewer"] move down 
+for_window [class="Shutter"] floating enable
+for_window [class="rdesktop"] floating disable
 
 exec --no-startup-id i3-msg 'workspace 1:Term; exec /usr/bin/urxvt' 
-exec --no-startup-id i3-msg 'workspace 2:Web; exec /usr/bin/firefox-nightly' 
+exec --no-startup-id i3-msg 'workspace 2:Web; exec /usr/bin/firefox-beta-bin' 
 exec --no-startup-id i3-msg 'workspace 10:Mail; exec /usr/bin/thunderbird' 

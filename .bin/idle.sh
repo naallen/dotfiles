@@ -19,7 +19,7 @@ while true; do
         pollingRate=0.25
     fi
 
-    if [[ $idleTimeMillis -gt $idleStageTwo && $idletwo = false  ]] ; then
+    if [[ $idleTimeMillis -gt $idleStageTwo && $idletwo = false && ! -a ~/.screenlock ]] ; then
         echo "idle stage two"
         xbacklight -set 0 
         xset dpms force off 
