@@ -11,7 +11,7 @@ while true; do
     idleTimeMillis=$(xprintidle)
     echo $idleTimeMillis  # just for debug purposes.
 
-    if [[ $idleTimeMillis -gt $idleStageOne && $idleone = false && ! -a ~/.screenlock ]] ; then
+    if [[ $idleTimeMillis -gt $idleStageOne && $idleone = false && ! -a ~/.dimlock ]] ; then
             echo "idle stage one"
             echo "$(xbacklight -get) + 1" | bc > ~/.backlight
             xbacklight -set 3 -time 5000 -steps 50 & 
@@ -19,7 +19,7 @@ while true; do
             pollingRate=0.25
         fi
 
-        if [[ $idleTimeMillis -gt $idleStageTwo && $idletwo = false && ! -a ~/.screenlock ]] ; then
+        if [[ $idleTimeMillis -gt $idleStageTwo && $idletwo = false && ! -a ~/.dimlock ]] ; then
             echo "idle stage two"
             xbacklight -set 0 
             xset dpms force off 

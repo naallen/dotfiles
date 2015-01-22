@@ -118,7 +118,7 @@ bindsym XF86MyComputer exec thunar
 bindsym XF86AudioPrev exec ncmpcpp prev
 bindsym XF86AudioNext exec ncmpcpp next
 bindsym XF86AudioPlay exec ncmpcpp toggle
-bindsym XF86WebCam exec xset q | grep -q 'timeout:  60' && xset s off || xset s 60 60
+bindsym XF86WebCam exec rm ~/.dimlock || touch ~/.dimlock 
 bindsym XF86Display exec sudo trackpoint_apply
 bindsym XF86MonBrightnessDown exec ~/.bin/lowerbrightness.sh 
 bindsym XF86MonBrightnessUp exec xbacklight +5
