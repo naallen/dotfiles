@@ -20,3 +20,4 @@ URxvt.keysym.C-V: perl:clipboard:paste
 URxvt.keysym.C-A-V: perl:clipboard:paste_escaped
 URxvt.iso14755 : false
 *TkTheme: clam
+XTerm*reverseVideo: on

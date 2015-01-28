@@ -350,6 +350,7 @@ alias \$=""
 
 alias bc="bc -ql"
 alias octave="octave -q"
+alias R='R -q'
 
 alias vi="vim"
 
