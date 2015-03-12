@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font pango:Open Sans Regular, Ionicons, Icons 8
+font pango:DejaVu Sans Mono, Ionicons, Icons 8
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -110,9 +110,9 @@ bindsym $mod+BackSpace exec xkill
 
 bindsym $mod+L exec ~/.bin/fuzzylock
 bindsym XF86AudioMicMute exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ 
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- 
-bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioRaiseVolume exec sh -c "amixer -q set Master 5%+ &&  pkill -RTMIN+1 i3blocks"
+bindsym XF86AudioLowerVolume exec sh -c "amixer -q set Master 5%- &&  pkill -RTMIN+1 i3blocks"
+bindsym XF86AudioMute exec sh -c "amixer -q set Master toggle && pkill -RTMIN+1 i3blocks"
 bindsym XF86Calculator exec speedcrunch
 bindsym XF86MyComputer exec thunar
 bindsym XF86AudioPrev exec ncmpcpp prev
@@ -123,7 +123,9 @@ bindsym XF86Display exec sudo trackpoint_apply
 bindsym XF86MonBrightnessDown exec ~/.bin/lowerbrightness.sh 
 bindsym XF86MonBrightnessUp exec xbacklight +5
 bindsym Print exec shutter -s
-bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: ' -f Terminus
+bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: ' -f DejaVu\ Sans 
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Num_Lock exec pkill -SIGRTMIN+11 i3blocks
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -155,19 +157,20 @@ mode "resize" {
 # finds out, if available)
 bar {
     i3bar_command  /usr/bin/i3bar-icons
-        status_command $HOME/.bin/conky-i3bar
-        font pango:Open Sans Regular, Ionicons, Icons 8
+        #status_command $HOME/.bin/conky-i3bar
+        status_command /home/nick/Workshop/i3blocks/i3blocks 
+        font pango:DejaVu Sans Mono, Icons 8
         position top
         workspace_buttons yes
         colors {
-            separator #2d2d2d
+            statusline      #999999
+                background      #252525
 
-                background #101010
-                statusline #999999
-                focused_workspace #825969 #191919
-                active_workspace #825969 #101010
-                inactive_workspace #9a878f #191919
-                urgent_workspace #2e3436 #9a878f
+# class                         border          backgrd         text
+                focused_workspace  #292929              #292929         #cccccc
+                active_workspace   #252525              #252525         #696f89
+                inactive_workspace #252525              #252525     #6b6b6b
+                urgent_workspace   #252525              #252525         #c7a551 
         }
 }
 
@@ -175,14 +178,18 @@ new_window 1pixel
 
 for_window [title="synapse"] border none
 
-# class                 border  backgr. text    indicator
-client.focused               #121212 #101010 #9e8a8e
-client.focused_inactive #101010 #191919 #999999
-client.unfocused           #101010 #191919 #999999
-client.urgent                 #cd989a #cd989a #2e3436
-
-client.background           #1d1d1d
-
+#class                 border  backgr.    text
+## LIME GREEN ACTIVE BORDER
+client.focused                  #9fbc00 #9fbc00  #111111
+## BLUE ACTIVE BORDER  
+#client.focused                 #2b6cc4 #2b6cc4  #111111
+## RED ACTIVE BORDER
+#client.focused                 #bf3f34 #bf3f34  #111111
+## LIGHTER RED ACTIVE BORDER
+#client.focused                 #cc5555 #cc5555  #111111
+client.unfocused                        #444444 #444444  #315858
+client.focused_inactive        #444444 #444444  #2c2c2f
+client.urgent                   #383a3b #383a3b  #ee0000
 
 for_window [class="Catfish"] floating enable
 for_window [class="Shutter"] floating enable
@@ -190,5 +197,5 @@ for_window [class="rdesktop"] floating disable
 for_window [class="urxvt"] floating enable
 
 exec --no-startup-id i3-msg 'workspace 1:Term; exec /usr/bin/urxvt' 
-exec --no-startup-id i3-msg 'workspace 2:Web; exec /usr/bin/firefox-beta-bin' 
+exec --no-startup-id i3-msg 'workspace 2:Web; exec /usr/bin/firefox' 
 exec --no-startup-id i3-msg 'workspace 10:Mail; exec /usr/bin/thunderbird' 

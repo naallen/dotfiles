@@ -358,3 +358,5 @@ alias vi="vim"
 getpdb() {
     wget http://www.rcsb.org/pdb/files/$1.pdb 
 }
+
+export SCHRODINGER=/opt/schrodinger2015-1
