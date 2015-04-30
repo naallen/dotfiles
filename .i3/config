@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font pango:DejaVu Sans Mono, Ionicons, Icons 8
+font xft:Monaco for Powerline, Ionicons, Icons 8
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -159,7 +159,7 @@ bar {
     i3bar_command  /usr/bin/i3bar-icons
         #status_command $HOME/.bin/conky-i3bar
         status_command /home/nick/Workshop/i3blocks/i3blocks 
-        font pango:DejaVu Sans Mono, Icons 8
+        font xft:Monaco for Powerline, Icons 8
         position top
         workspace_buttons yes
         colors {
