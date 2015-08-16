@@ -164,22 +164,6 @@ hosts=(
 localhost
 )
 
-echo -en "\033[4 q"
-# change cursor colour depending on vi mode
-zle-keymap-select () {
-    if [ "$TERM" = "rxvt-unicode-256color" ]; then
-        if [ $KEYMAP = vicmd ]; then
-            echo -en "\033[2 q"
-        else
-            echo -en "\033[4 q"    
-        fi
-    fi
-}; zle -N zle-keymap-select
-zle-line-init () {
-    zle -K viins
-    echo -en "\033[4 q"
-}; zle -N zle-line-init
-
 zstyle ':completion:*:hosts' hosts $hosts
 zstyle ':completion:*' users off
 
@@ -360,3 +344,6 @@ getpdb() {
 }
 
 export SCHRODINGER=/opt/schrodinger2015-1
+
+
+. /home/nick/torch/install/bin/torch-activate
