@@ -9,7 +9,6 @@ set nocompatible
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'sjl/gundo.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'

@@ -158,7 +158,7 @@ mode "resize" {
 bar {
     i3bar_command  /usr/bin/i3bar-icons
         #status_command $HOME/.bin/conky-i3bar
-        status_command /home/nick/Workshop/i3blocks/i3blocks 
+        status_command i3blocks 
         font pango:DejaVu Sans Mono, Icons 8
         position top
         workspace_buttons yes
