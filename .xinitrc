@@ -16,7 +16,6 @@ xflux -l 43.467079 -g -79.714499 &
 dunst -conf ~/.dunstrc &
 synapse -s &
 numlockx &
-thunar --daemon &
 compton --backend glx --paint-on-overlay --vsync opengl-swc &
 hsetroot -fill ~/Pictures/wallpaper.png &
 ~/.bin/idle.sh 45000 60000 &

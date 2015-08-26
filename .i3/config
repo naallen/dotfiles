@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font pango:DejaVu Sans Mono, Ionicons, Icons 8
+font xft:Monaco for Powerline, Ionicons, Icons 8
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -124,7 +124,7 @@ bindsym XF86MonBrightnessDown exec ~/.bin/lowerbrightness.sh
 bindsym XF86MonBrightnessUp exec xbacklight +5
 bindsym Print exec shutter -s
 bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: ' -f DejaVu\ Sans 
-bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Caps_Lock exec sh -c "pkill -SIGRTMIN+11 i3blocks"
 bindsym --release Num_Lock exec pkill -SIGRTMIN+11 i3blocks
 
 # resize window (you can also use the mouse for that)
@@ -158,8 +158,8 @@ mode "resize" {
 bar {
     i3bar_command  /usr/bin/i3bar-icons
         #status_command $HOME/.bin/conky-i3bar
-        status_command i3blocks 
-        font pango:DejaVu Sans Mono, Icons 8
+        status_command $HOME/.i3blocks/i3blocks 
+        font xft:Meslo LG S, Icons 7.5
         position top
         workspace_buttons yes
         colors {
@@ -195,7 +195,8 @@ for_window [class="Catfish"] floating enable
 for_window [class="Shutter"] floating enable
 for_window [class="rdesktop"] floating disable
 for_window [class="urxvt"] floating enable
+for_window [class="Navigator" urgent="latest"] focus
 
 exec --no-startup-id i3-msg 'workspace 1:Term; exec /usr/bin/urxvt' 
-exec --no-startup-id i3-msg 'workspace 2:Web; exec /usr/bin/firefox' 
+exec --no-startup-id i3-msg 'workspace 2:Web; exec /usr/bin/palemoon' 
 exec --no-startup-id i3-msg 'workspace 10:Mail; exec /usr/bin/thunderbird' 

@@ -344,3 +344,6 @@ getpdb() {
 }
 
 export SCHRODINGER=/opt/schrodinger2015-1
+
+
+. /home/nick/torch/install/bin/torch-activate
