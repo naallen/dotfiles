@@ -1,5 +1,6 @@
 #include "/home/nick/.xrdb/molokai.xrdb"
 
+Xft.dpi: 72
 URxvt.depth: 32
 URxvt.scrollStyle: plain
 URxvt.vt100*geometry: 80x50
@@ -7,16 +8,15 @@ URxvt.url-launcher:      /usr/bin/palemoon
 URxvt.matcher.button:   1
 URxvt.charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 URxvt.perl-ext-common:  default,matcher,vtwheel,clipboard
-*font: xft:Monaco for Powerline:size=7.5
-UXTerm*faceName: xft:Menlo-Powerline:size=8
-UXTerm*faceSize: 8
-URxvt.italicFont: xft:Monaco for Powerline:italic:size=8
+*font: xft:Monaco for Powerline:size=9
+URxvt.italicFont: xft:Monaco for Powerline:italic:size=9
 URxvt.geometry: 80x25
 URxvt.scrollBar:        false
 URxvt.scrollBar_right:        true
 URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/Terminal.svg
 URxvt.keysym.C-C: perl:clipboard:copy
 URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.letterSpace: -1
 URxvt.keysym.C-A-V: perl:clipboard:paste_escaped
 URxvt.iso14755 : false
 *TkTheme: clam

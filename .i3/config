@@ -124,8 +124,6 @@ bindsym XF86MonBrightnessDown exec ~/.bin/lowerbrightness.sh
 bindsym XF86MonBrightnessUp exec xbacklight +5
 bindsym Print exec shutter -s
 bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: ' -f DejaVu\ Sans 
-bindsym --release Caps_Lock exec sh -c "pkill -SIGRTMIN+11 i3blocks"
-bindsym --release Num_Lock exec pkill -SIGRTMIN+11 i3blocks
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -159,7 +157,7 @@ bar {
     i3bar_command  /usr/bin/i3bar-icons
         #status_command $HOME/.bin/conky-i3bar
         status_command $HOME/.i3blocks/i3blocks 
-        font xft:Meslo LG S, Icons 7.5
+        font xft:Meslo LG S, Icons 6
         position top
         workspace_buttons yes
         colors {
