@@ -8,8 +8,8 @@ URxvt.url-launcher:      /usr/bin/palemoon
 URxvt.matcher.button:   1
 URxvt.charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 URxvt.perl-ext-common:  default,matcher,vtwheel,clipboard
-*font: xft:Monaco for Powerline:size=9
-URxvt.italicFont: xft:Monaco for Powerline:italic:size=9
+*font: xft:Monaco for Powerline:pixelsize=9:antialias=false
+URxvt.italicFont: xft:Monaco for Powerline:italic:pixelsize=9:antialias=false
 URxvt.geometry: 80x25
 URxvt.scrollBar:        false
 URxvt.scrollBar_right:        true
