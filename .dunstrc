@@ -1,5 +1,5 @@
 [global]
-    font = Droid Sans 10 
+    font = Monaco for Powerline 6 
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -148,7 +148,7 @@
     icon_folders = /usr/share/icons/Numix/16x16/status/:/usr/share/icons/Numix/16x16/devices/
 
 [frame]
-    width = 2
+    width = 1
     color = "#aaaaaa"
 
 [shortcuts]

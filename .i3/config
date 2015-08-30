@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font xft:Monaco for Powerline, Ionicons, Icons 8
+font pango:Monaco for Powerline, Ionicons, Icons 6
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -108,7 +108,8 @@ bindsym $mod+Shift+e exec "zenity --question --text='Are you sure you want to re
 
 bindsym $mod+BackSpace exec xkill
 
-bindsym $mod+L exec ~/.bin/fuzzylock
+bindsym XF86TaskPane workspace number 9
+bindsym XF86ScreenSaver exec ~/.bin/fuzzylock
 bindsym XF86AudioMicMute exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
 bindsym XF86AudioRaiseVolume exec sh -c "amixer -q set Master 5%+ &&  pkill -RTMIN+1 i3blocks"
 bindsym XF86AudioLowerVolume exec sh -c "amixer -q set Master 5%- &&  pkill -RTMIN+1 i3blocks"
@@ -122,8 +123,11 @@ bindsym XF86WebCam exec rm ~/.dimlock || touch ~/.dimlock
 bindsym XF86Display exec sudo trackpoint_apply
 bindsym XF86MonBrightnessDown exec ~/.bin/lowerbrightness.sh 
 bindsym XF86MonBrightnessUp exec xbacklight +5
+bindsym XF86RotateWindows exec ~/.bin/rotate.sh normal
 bindsym Print exec shutter -s
-bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: ' -f DejaVu\ Sans 
+bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: ' -f Monaco\ for\ Powerline 
+
+workspace_auto_back_and_forth yes
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -157,7 +161,7 @@ bar {
     i3bar_command  /usr/bin/i3bar-icons
         #status_command $HOME/.bin/conky-i3bar
         status_command $HOME/.i3blocks/i3blocks 
-        font xft:Meslo LG S, Icons 6
+        font pango:Monaco for Powerline, Icons 6
         position top
         workspace_buttons yes
         colors {
@@ -194,7 +198,9 @@ for_window [class="Shutter"] floating enable
 for_window [class="rdesktop"] floating disable
 for_window [class="urxvt"] floating enable
 for_window [class="Navigator" urgent="latest"] focus
+for_window [class="Xournal"] fullscreen
 
 exec --no-startup-id i3-msg 'workspace 1:Term; exec /usr/bin/urxvt' 
 exec --no-startup-id i3-msg 'workspace 2:Web; exec /usr/bin/palemoon' 
-exec --no-startup-id i3-msg 'workspace 10:Mail; exec /usr/bin/thunderbird' 
+exec --no-startup-id i3-msg 'workspace 10:Mail; exec /usr/bin/geary'
+exec --no-startup-id i3-msg 'workspace 9:Drawpad; exec /usr/bin/xournal'

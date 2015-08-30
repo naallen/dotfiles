@@ -17,20 +17,21 @@ xinput set-prop "TPPS/2 IBM TrackPoint" "Device Accel Constant Deceleration" 0.9
 
 /usr/lib/systemd/systemd --user &
 
+xset -s &
 xrdb -merge ~/.Xresources
 xflux -l 43.467079 -g -79.714499 &
 dunst -conf ~/.dunstrc &
-synapse -s &
 numlockx &
 compton --backend glx --paint-on-overlay --vsync opengl-swc &
 .wallpaper/update.sh /home/nick/.wallpaper
-~/.bin/idle.sh 45000 60000 &
 udiskie -n -a -s &
 synclient TouchpadOff=1 &
 ~/.bin/lightsOn.sh 50 &
-~/.bin/trackpoint_apply &
+sudo ~/.bin/trackpoint_apply &
 #sxhkd &
 #panel &
+
+synapse -s &
 
 exec i3
 #exec /home/nick/Workshop/openFrameworks/apps/hax/dex-ui/bin/dex-ui 

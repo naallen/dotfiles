@@ -16,7 +16,7 @@ URxvt.scrollBar_right:        true
 URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/Terminal.svg
 URxvt.keysym.C-C: perl:clipboard:copy
 URxvt.keysym.C-V: perl:clipboard:paste
-URxvt.letterSpace: -1
+URxvt.letterSpace: -2
 URxvt.keysym.C-A-V: perl:clipboard:paste_escaped
 URxvt.iso14755 : false
 *TkTheme: clam
