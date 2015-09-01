@@ -17,7 +17,8 @@ xinput set-prop "TPPS/2 IBM TrackPoint" "Device Accel Constant Deceleration" 0.9
 
 /usr/lib/systemd/systemd --user &
 
-xset -s &
+xhost + &
+xset s 60 60 &
 xrdb -merge ~/.Xresources
 xflux -l 43.467079 -g -79.714499 &
 dunst -conf ~/.dunstrc &

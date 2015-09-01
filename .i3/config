@@ -182,9 +182,9 @@ for_window [title="synapse"] border none
 
 #class                 border  backgr.    text
 ## LIME GREEN ACTIVE BORDER
-client.focused                  #9fbc00 #9fbc00  #111111
+#client.focused                  #9fbc00 #9fbc00  #111111
 ## BLUE ACTIVE BORDER  
-#client.focused                 #2b6cc4 #2b6cc4  #111111
+client.focused                 #2b6cc4 #2b6cc4  #111111
 ## RED ACTIVE BORDER
 #client.focused                 #bf3f34 #bf3f34  #111111
 ## LIGHTER RED ACTIVE BORDER

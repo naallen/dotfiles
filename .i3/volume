@@ -52,8 +52,8 @@ amixer get Master | awk -F'[]%[]' '/%/ {print $7}'
 
 format() {
     read on
-    VOL=`amixer sget Master | grep Mono: | sed -e 's/[ \t]*Mono: Playback [0-9]* \[\([0-9]*%\)\].*/\1/'`
-    [[ "$on" = "on" ]] && printf "%4s\n" $VOL || printf "%4s\n\n\n#C9142C\n/home/nick/.i3/icons/vol3.xbm" "$VOL"
+    VOL=`amixer sget Master | grep Front\ Left: | sed -e 's/[ \t]*Front Left: Playback [0-9]* \[\([0-9]*%\)\].*/\1/'`
+    [[ "$on" = "on" ]] && printf "%4s\n" $VOL || printf "%4s\n\n\n#bf3f34\n/home/nick/.i3/icons/vol3.xbm" "$VOL"
 }
 
 #------------------------------------------------------------------------

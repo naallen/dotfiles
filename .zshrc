@@ -333,7 +333,7 @@ alias \#="sudo "
 alias \$=""
 
 alias bc="bc -ql"
-alias octave="octave -q"
+alias octave-cli="octave-cli -q"
 alias R='R -q'
 
 alias vi="vim"
