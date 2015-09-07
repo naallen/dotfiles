@@ -29,6 +29,7 @@ udiskie -n -a -s &
 synclient TouchpadOff=1 &
 ~/.bin/lightsOn.sh 50 &
 sudo ~/.bin/trackpoint_apply &
+bashbullet &
 #sxhkd &
 #panel &
 
