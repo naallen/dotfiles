@@ -108,7 +108,8 @@ bindsym $mod+Shift+e exec "zenity --question --text='Are you sure you want to re
 
 bindsym $mod+BackSpace exec xkill
 
-bindsym XF86TaskPane workspace number 9
+#bindsym XF86TaskPane workspace number 9
+bindsym XF86TaskPane exec ~/.bin/rotate.sh invert 
 bindsym XF86ScreenSaver exec ~/.bin/fuzzylock
 bindsym XF86AudioMicMute exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
 bindsym XF86AudioRaiseVolume exec sh -c "amixer -q set Master 5%+ &&  pkill -RTMIN+1 i3blocks"
@@ -123,7 +124,7 @@ bindsym XF86WebCam exec rm ~/.dimlock || touch ~/.dimlock
 bindsym XF86Display exec sudo trackpoint_apply
 bindsym XF86MonBrightnessDown exec ~/.bin/lowerbrightness.sh 
 bindsym XF86MonBrightnessUp exec xbacklight +5
-bindsym XF86RotateWindows exec ~/.bin/rotate.sh normal
+#bindsym XF86RotateWindows exec ~/.bin/rotate.sh invert 
 bindsym Print exec shutter -s
 bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: ' -f Monaco\ for\ Powerline 
 
@@ -195,6 +196,7 @@ client.urgent                   #383a3b #383a3b  #ee0000
 
 for_window [class="Catfish"] floating enable
 for_window [class="Shutter"] floating enable
+for_window [class="Gloobus-preview"] floating enable
 for_window [class="rdesktop"] floating disable
 for_window [class="urxvt"] floating enable
 for_window [class="Navigator" urgent="latest"] focus
