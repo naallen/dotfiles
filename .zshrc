@@ -345,4 +345,7 @@ getpdb() {
 
 export SCHRODINGER=/opt/schrodinger2015-1
 
-
+#C1, C2, final V
+stockdilution() {
+    units --terse "($2/$1 * $3)" uL
+}

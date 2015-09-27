@@ -124,6 +124,8 @@ bindsym XF86WebCam exec rm ~/.dimlock || touch ~/.dimlock
 bindsym XF86Display exec sudo trackpoint_apply
 bindsym XF86MonBrightnessDown exec ~/.bin/lowerbrightness.sh 
 bindsym XF86MonBrightnessUp exec xbacklight +5
+bindsym XF86Launch1 exec synapse
+bindsym XF86WLAN exec sudo systemctl restart connman
 #bindsym XF86RotateWindows exec ~/.bin/rotate.sh invert 
 bindsym Print exec shutter -s
 bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: ' -f Monaco\ for\ Powerline 
@@ -178,6 +180,8 @@ bar {
 }
 
 new_window 1pixel
+for_window [class="xfreerdp"] floating disable
+for_window [class="^.*"] border pixel 1
 
 for_window [title="synapse"] border none
 
@@ -185,12 +189,12 @@ for_window [title="synapse"] border none
 ## LIME GREEN ACTIVE BORDER
 #client.focused                  #9fbc00 #9fbc00  #111111
 ## BLUE ACTIVE BORDER  
-client.focused                 #2b6cc4 #2b6cc4  #111111
+#client.focused                 #2b6cc4 #2b6cc4  #111111
 ## RED ACTIVE BORDER
-#client.focused                 #bf3f34 #bf3f34  #111111
+client.focused                 #bf3f34 #bf3f34  #111111
 ## LIGHTER RED ACTIVE BORDER
 #client.focused                 #cc5555 #cc5555  #111111
-client.unfocused                        #444444 #444444  #315858
+client.unfocused                        #444444 #444444  #6b6b6b
 client.focused_inactive        #444444 #444444  #2c2c2f
 client.urgent                   #383a3b #383a3b  #ee0000
 
@@ -200,9 +204,8 @@ for_window [class="Gloobus-preview"] floating enable
 for_window [class="rdesktop"] floating disable
 for_window [class="urxvt"] floating enable
 for_window [class="Navigator" urgent="latest"] focus
-for_window [class="Xournal"] fullscreen
 
 exec --no-startup-id i3-msg 'workspace 1:Term; exec /usr/bin/urxvt' 
 exec --no-startup-id i3-msg 'workspace 2:Web; exec /usr/bin/palemoon' 
-exec --no-startup-id i3-msg 'workspace 10:Mail; exec /usr/bin/geary'
+exec --no-startup-id i3-msg 'workspace 10:Mail; exec /usr/bin/thunderbird'
 exec --no-startup-id i3-msg 'workspace 9:Drawpad; exec /usr/bin/xournal'
