@@ -27,6 +27,8 @@ Plugin 'freitass/todo.txt-vim'
 Plugin 'panozzaj/vim-autocorrect'
 Plugin 'junegunn/goyo.vim'
 Plugin 'jplaut/vim-arduino-ino'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 "Plugin 'colorsupport.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required

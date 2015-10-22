@@ -21,20 +21,14 @@ xhost + &
 xset s 60 60 &
 xrdb -merge ~/.Xresources &
 dunst -conf ~/.dunstrc &
-numlockx &
-compton --backend glx --paint-on-overlay --vsync opengl-swc &
-.wallpaper/update.sh /home/nick/.wallpaper
 udiskie -n -a -s &
-synclient TouchpadOff=1 &
 ~/.bin/lightsOn.sh 50 &
 sudo /bin/trackpoint_apply.sh &
 .wallpaper/update.sh &
 lxsession &
+systemctl --user start compton &
+systemctl --user start synapse &
 #sxhkd &
 #panel &
 
-synapse -s &
-
 exec i3
-#exec startxfce4
-#exec /home/nick/Workshop/openFrameworks/apps/hax/dex-ui/bin/dex-ui 
