@@ -29,6 +29,7 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'jplaut/vim-arduino-ino'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'chriskempson/base16-vim'
 "Plugin 'colorsupport.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -112,10 +113,11 @@ noremap <Leader>n :NERDTreeToggle<cr>
 set laststatus=2
 
 set background=dark
-colorscheme molokai 
+colorscheme base16-flat
+let base16colorspace=256
 
 if has ('gui_running')
-  colorscheme molokai
+  colorscheme base16-default
   set spell
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar

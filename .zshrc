@@ -3,6 +3,8 @@ compinit
 promptinit
 colors
 
+~/.zsh/base16-flat.dark.sh
+
 setopt always_to_end
 setopt no_case_glob
 setopt complete_in_word

@@ -31,7 +31,7 @@
     
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = left
+    alignment = center 
     
     # The frequency with wich text that is longer than the notification
     # window allows bounces back and forth.
@@ -64,7 +64,7 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "300x5-0+18"
+    geometry = "x5-0+18"
     
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
@@ -142,13 +142,13 @@
     browser = /usr/bin/firefox -new-tab
 
     # Align icons left/right/off
-    icon_position = left 
+    icon_position = off 
 
     # Paths to default icons.
     icon_folders = /usr/share/icons/Numix/16x16/status/:/usr/share/icons/Numix/16x16/devices/
 
 [frame]
-    width = 1
+    width = 0
     color = "#aaaaaa"
 
 [shortcuts]
@@ -175,18 +175,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
-    timeout = 10
+    background = "#34495E"
+    foreground = "#BDC3C7"
+    timeout = 3
 
 [urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
-    timeout = 10
+    background = "#34495E"
+    foreground = "#BDC3C7"
+    timeout = 5
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
+    background = "#E74C3C"
+    foreground = "#bdc3c7"
     timeout = 0
 
 

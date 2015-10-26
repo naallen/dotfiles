@@ -1,4 +1,4 @@
-#include "/home/nick/.xrdb/molokai.xrdb"
+#include "/home/nick/.xrdb/base16-flat.dark.256.xresources"
 
 Xft.dpi: 72
 URxvt.depth: 32

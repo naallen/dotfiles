@@ -161,21 +161,21 @@ mode "resize" {
 # finds out, if available)
 bar {
     strip_workspace_numbers yes
-    i3bar_command  /usr/bin/i3bar-icons
-        #status_command $HOME/.bin/conky-i3bar
+        i3bar_command  /usr/bin/i3bar-icons
+#status_command $HOME/.bin/conky-i3bar
         status_command $HOME/.i3blocks/i3blocks 
         font pango:Monaco for Powerline, FontAwesome, Ionicons 6
         position top
         workspace_buttons yes
         colors {
-            statusline      #999999
-                background      #252525
+            statusline      #ECF0F1
+                background      #2C3E50
 
 # class                         border          backgrd         text
-                focused_workspace  #292929              #292929         #cccccc
-                active_workspace   #252525              #252525         #696f89
-                inactive_workspace #252525              #252525     #6b6b6b
-                urgent_workspace   #252525              #252525         #c7a551 
+                focused_workspace  #3498DB #2C3E50 #f5f5f5
+                active_workspace   #1ABC9C #2C3E50 #BDC3C7
+                inactive_workspace #2C3E50 #2C3E50 #BDC3C7
+                urgent_workspace   #f92672 #2C3E50 #BDC3C7
         }
 }
 
@@ -185,18 +185,11 @@ for_window [class="^.*"] border pixel 1
 
 for_window [title="synapse"] border none
 
-#class                 border  backgr.    text
-## LIME GREEN ACTIVE BORDER
-#client.focused                  #9fbc00 #9fbc00  #111111
-## BLUE ACTIVE BORDER  
-#client.focused                 #2b6cc4 #2b6cc4  #111111
-## RED ACTIVE BORDER
-client.focused                 #bf3f34 #bf3f34  #111111
-## LIGHTER RED ACTIVE BORDER
-#client.focused                 #cc5555 #cc5555  #111111
-client.unfocused                        #444444 #444444  #6b6b6b
-client.focused_inactive        #444444 #444444  #2c2c2f
-client.urgent                   #383a3b #383a3b  #ee0000
+#class                  border  backgr.  text
+client.focused          #3498D8 #2C3E50  #f5f5f5
+client.unfocused        #3498D8 #2C3E50  #BDC3C7
+client.focused_inactive #3498D8 #2C3E50  #BDC3C7
+client.urgent           #3498D8 #2C3E50  #BDC3C7
 
 for_window [class="Catfish"] floating enable
 for_window [class="Shutter"] floating enable
