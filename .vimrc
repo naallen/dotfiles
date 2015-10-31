@@ -26,6 +26,7 @@ Plugin 'tomasr/molokai'
 Plugin 'freitass/todo.txt-vim'
 Plugin 'panozzaj/vim-autocorrect'
 Plugin 'junegunn/goyo.vim'
+Plugin 'Chiel92/vim-autoformat'
 Plugin 'jplaut/vim-arduino-ino'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
@@ -181,6 +182,11 @@ if &term =~ 'rxvt-unicode-256color'
   " 5 -> blinking vertical bar
   " 6 -> solid vertical bar
 endif
+
+noremap <F3> :Autoformat<CR>
+
+let g:formatdef_my_custom_cpp = '"astyle --mode=c --indent=spaces=2 --convert-tabs --min-conditional-indent=2 --pad-header --keep-one-line-blocks --keep-one-line-statements --max-instatement-indent=40 --pad-oper"'
+let g:formatters_cpp = ['my_custom_cpp']
 
 set encoding=utf-8
 let g:Powerline_symbols="fancy"

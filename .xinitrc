@@ -21,13 +21,14 @@ xhost + &
 xset s 60 60 &
 xrdb -merge ~/.Xresources &
 dunst -conf ~/.dunstrc &
-udiskie -n -a -s &
+udiskie -N -a -s &
 ~/.bin/lightsOn.sh 50 &
 sudo /bin/trackpoint_apply.sh &
 .wallpaper/update.sh &
 lxsession &
 systemctl --user start compton &
 systemctl --user start synapse &
+systemctl --user start dunst &
 #sxhkd &
 #panel &
 
