@@ -19,8 +19,8 @@ Plugin 'panozzaj/vim-autocorrect'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'chriskempson/base16-vim'
+Plugin 'Valloric/YouCompleteMe'
 "Plugin 'colorsupport.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
