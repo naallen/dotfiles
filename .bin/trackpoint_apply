@@ -1,0 +1,5 @@
+source /etc/conf.d/trackpoint.conf
+
+/usr/bin/echo $sensitivity > /sys/class/input/mouse0/device/device/sensitivity
+/usr/bin/echo $speed > /sys/class/input/mouse0/device/device/speed
+/usr/bin/echo $inertia > /sys/class/input/mouse0/device/device/inertia
