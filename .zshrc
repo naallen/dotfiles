@@ -178,10 +178,9 @@ if [ "$TERM" = "linux" ]; then
 else
     PROMPT="➤ "
 fi
+RPROMPT='[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}$(git_super_status)]'
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    RPROMPT='[%{%(!.$fg[magenta].$fg[green])%}%2~%{$reset_color%}$(git_super_status)]'
-else
-    RPROMPT='[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}$(git_super_status)]'
+    RPROMPT='[%{$fg[green]%}$HOST%{$reset_color%}]'$RPROMPT
 fi
 
 expand-or-complete-with-dots() {
