@@ -1,0 +1,42 @@
+"1.0.5-pm
+
+loadplugins '\.(js|penta)$'
+group user
+highlight CmdCmdLine font-size: 9px; font-family: Monaco for Powerline; font-weight: normal;
+highlight -link=FontFixed,Normal Comp /* The completion window */ margin: 0; border-top: 1px solid black; font-family: Monaco for Powerline; font-size: 9px;
+highlight CompItem>* padding: 0 0.5ex;
+highlight CompMsg font-style: italic; margin-left: 16px; font-style: italic; font-family:Monaco for Powerline;
+highlight CompTitle>* color: #333; border-top: 1px solid gray; border-bottom: 1px solid #BBB; padding: 1px 0.5ex; text-shadow: 1px 1px 0px #E0E0E0; font-family: Monaco for Powerline; font-size: 9px;
+highlight Download display: table-row; font-family: Monaco for Powerline; font-size: 9px;
+highlight -link=DownloadCell DownloadHead>* font-family: Monaco for Powerline; font-size: 9px;
+highlight ErrorMsg color: white; background: red; font-weight: bold; font-family:Monaco for Powerline; font-size:9px;
+highlight -link=FontCode HelpCode display: block; white-space: pre; margin-left: 2em; font-family: Monaco, Fixed, monospace; display: block; white-space: pre; margin-left: 2em; font-family: Monaco, Fixed, monospace; font-size: 9px;
+highlight Hint background: grey; border: 1px solid black; box-shadow: 1px 1px 2px #000000; border-radius: 3px; font-weight: bold; font-size: 8pt; font-family: Helvetica; color:white; 
+highlight HintActive background-color: #00FF00; color: black; 
+highlight HintElem box-shadow: 1px 1px 2px #000000; border-radius: 6px; 
+highlight HintImage box-shadow: 1px 1px 2px #000000; border-radius: 6px; 
+highlight InfoMsg color: gray; background: transparent; font-weight: normal; font-family: Monaco for Powerline; font-size: 9px;
+highlight -link=FontFixed StatusLine -moz-appearance: none !important; font-weight: normal; background: transparent !important; border: 0px !important; padding-right: 0px !important; min-height: 18px !important; text-shadow: none !important; font-family: Monaco for Powerline; font-size: 9px; background-color:#2C3E50;
+highlight StatusLineBroken /* The status bar for a broken web page */ color: black !important; background: #be643c !important; 
+highlight StatusLineExtended /* The status bar for a secure web page */ color: black !important; background: #2ECC71 !important; 
+highlight StatusLineNormal /* The status bar for an ordinary web page */ color: #f5f5f5 !important; background: #34495E  !important; 
+highlight StatusLineSecure /* The status bar for a secure web page */ color: black !important; background: #2ECC71 !important; 
+highlight Title color: magenta; background: white; font-weight: bold; font-family:Monaco for Powerline; font-size: 9px;
+map -count -modes=i <C-c> -builtin <C-v><C-c>
+map -count -modes=i <C-v> -builtin <C-v><C-v>
+map -count -modes=i <C-x> -builtin <C-v><C-x>
+map -count -modes=i <C-a> -builtin <C-a><C-a>
+map -count -modes=n <C-S-N> <count><count>:noscript<Space>popup<Return>
+map -count -modes=n,v j -builtin <count>3j
+map -count -modes=n,v k -builtin <count>3k
+map -count -modes=n,v J -builtin <count>gT
+map -count -modes=n,v K -builtin <count>gt
+map -count -modes=n,v x -builtin <count>d
+map -count -modes=n,v D -builtin <count>:downloads<Return>
+map -count -modes=n <C-c> -builtin <count><C-v><C-c>
+map -count -modes=n <C-v> -builtin <count><C-v><C-v>
+map -count -modes=n <C-x> -builtin <count><C-v><C-x>
+set complete=search,location,file,suggestion
+set hintkeys=asdfg;lkjh
+
+" vim: set ft=pentadactyl:
