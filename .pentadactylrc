@@ -2,30 +2,80 @@
 
 loadplugins '\.(js|penta)$'
 group user
-highlight CmdCmdLine font-size: 9px; font-family: Monaco for Powerline; font-weight: normal;
-highlight -link=FontFixed,Normal Comp /* The completion window */ margin: 0; border-top: 1px solid black; font-family: Monaco for Powerline; font-size: 9px;
-highlight CompItem>* padding: 0 0.5ex;
-highlight CompMsg font-style: italic; margin-left: 16px; font-style: italic; font-family:Monaco for Powerline;
-highlight CompTitle>* color: #333; border-top: 1px solid gray; border-bottom: 1px solid #BBB; padding: 1px 0.5ex; text-shadow: 1px 1px 0px #E0E0E0; font-family: Monaco for Powerline; font-size: 9px;
-highlight Download display: table-row; font-family: Monaco for Powerline; font-size: 9px;
-highlight -link=DownloadCell DownloadHead>* font-family: Monaco for Powerline; font-size: 9px;
-highlight ErrorMsg color: white; background: red; font-weight: bold; font-family:Monaco for Powerline; font-size:9px;
-highlight -link=FontCode HelpCode display: block; white-space: pre; margin-left: 2em; font-family: Monaco, Fixed, monospace; display: block; white-space: pre; margin-left: 2em; font-family: Monaco, Fixed, monospace; font-size: 9px;
-highlight Hint background: grey; border: 1px solid black; box-shadow: 1px 1px 2px #000000; border-radius: 3px; font-weight: bold; font-size: 8pt; font-family: Helvetica; color:white; 
-highlight HintActive background-color: #00FF00; color: black; 
-highlight HintElem box-shadow: 1px 1px 2px #000000; border-radius: 6px; 
-highlight HintImage box-shadow: 1px 1px 2px #000000; border-radius: 6px; 
-highlight InfoMsg color: gray; background: transparent; font-weight: normal; font-family: Monaco for Powerline; font-size: 9px;
-highlight -link=FontFixed StatusLine -moz-appearance: none !important; font-weight: normal; background: transparent !important; border: 0px !important; padding-right: 0px !important; min-height: 18px !important; text-shadow: none !important; font-family: Monaco for Powerline; font-size: 9px; background-color:#2C3E50;
-highlight StatusLineBroken /* The status bar for a broken web page */ color: black !important; background: #be643c !important; 
-highlight StatusLineExtended /* The status bar for a secure web page */ color: black !important; background: #2ECC71 !important; 
-highlight StatusLineNormal /* The status bar for an ordinary web page */ color: #f5f5f5 !important; background: #34495E  !important; 
-highlight StatusLineSecure /* The status bar for a secure web page */ color: black !important; background: #2ECC71 !important; 
-highlight Title color: magenta; background: white; font-weight: bold; font-family:Monaco for Powerline; font-size: 9px;
+highlight b_base00 color: #2C3E50 !important; 
+highlight b_base00_b background-color: #2C3E50 !important;
+highlight b_base01 color: #34495E !important;     
+highlight b_base01_b background-color: #34495E !important;
+highlight b_base02 color: #7F8C8D !important; 
+highlight b_base02_b background-color: #7F8C8D !important;
+highlight b_base03 color: #95A5A6 !important; 
+highlight b_base03_b background-color: #95A5A6 !important;
+highlight b_base04 color: #BDC3C7 !important; 
+highlight b_base04_b background-color: #BDC3C7 !important;
+highlight b_base05 color: #e0e0e0 !important; 
+highlight b_base05_b background-color: #e0e0e0 !important;
+highlight b_base06 color: #f5f5f5 !important;   
+highlight b_base06_b background-color: #f5f5f5 !important; 
+highlight b_base07 color: #ECF0F1 !important;
+highlight b_base07_b background-color: #ECF0F1 !important;
+highlight b_base08 color: #E74C3C !important;
+highlight b_base08_b background-color: #E74C3C !important; 
+highlight b_base09 color: #E67E22 !important;
+highlight b_base09_b background-color: #E67E22 !important; 
+highlight b_base0A color: #F1C40F !important;
+highlight b_base0A_b background-color: #F1C40F !important; 
+highlight b_base0B color: #2ECC71 !important;
+highlight b_base0B_b background-color: #2ECC71 !important; 
+highlight b_base0C color: #1ABC9C !important;
+highlight b_base0C_b background-color: #1ABC9C !important; 
+highlight b_base0D color: #3498DB !important;
+highlight b_base0D_b background-color: #3498DB !important; 
+highlight b_base0E color: #9B59B6 !important;
+highlight b_base0E_b background-color: #9B59B6 !important; 
+highlight b_base0F color: #be643c !important;
+highlight b_base0F_b background-color: #be643c !important; 
+highlight -link=b_base08_b Bell
+highlight -link=b_base04 Button display: inline-block; font-weight: bold; cursor: pointer; color: black; text-decoration: none;
+highlight -link=b_base04 CompDesc color: gray; width: 62%; padding-left: 1em;
+highlight -link=b_base09,b_base03_b CompItem[selected]
+highlight -link=b_base07,b_base00_b CompTitle
+highlight CompTitleSep height: 0px;
+highlight -link=b_base0E Disabled color: gray    !important;
+highlight -link=b_base0B Enabled color: blue;
+highlight -link=b_base01,b_base08_b ErrorMsg
+highlight -link=b_base0A Filter font-weight: bold;
+highlight FontFixed font-family: Monaco !important;
+highlight -link=b_base0E FrameIndicator background-color: red; opacity: 0.5; z-index: 999999; position: fixed; top: 0; bottom: 0; left: 0; right: 0;
+highlight -link=b_base07,b_base01_b Hint font: bold 10px "Droid Sans Mono", monospace !important; margin: -.2ex; padding: 2px 3px 2px 2px; background: rgba(255, 248, 231, .8); color: black; border: 1px black; border-radius: 2px; 
+highlight HintActive background-color: #88FF00 !important; color: black !important;
+highlight HintElem background-color: none; color: black !important; box-shadow: 2px 2px 2px #000; border-radius: 4px;
+highlight -link=b_base0E Indicator color: blue; width: 1.5em; text-align: center;
+highlight -link=b_base06 InfoMsg
+highlight -link=b_base0E,b_base0E_b LineNr
+highlight -link=b_base02,b_base04_b LinkInfo color: black; position: absolute; left: 100%; padding: 1ex; margin: -1ex -1em; background: rgba(255, 255, 255, .8); border-radius: 1ex;
+highlight -link=b_base06,b_base02_b Message
+highlight -link=b_base06 ModeMsg
+highlight MoreMsg color: inherit !important; background: white       !important; background-color: inherit !important;
+highlight -link=b_base09,b_base02_b NonText color: blue; background: transparent !important; min-height: 16px; padding-left: 2px;
+highlight -link=b_base06,b_base01_b Normal font-size: 9px !important;
+highlight -link=b_base03 Preview color: gray;
+highlight -link=b_base0E Question
+highlight -link=FontFixed StatusLine -moz-appearance: none !important; font-weight: normal; background: transparent !important; border: 0px !important; padding-right: 0px !important; min-height: 18px !important; text-shadow: none !important;
+highlight -link=b_base08_b,b_base06 StatusLineBroken font-size: 9px !important;
+highlight -link=b_base0B_b,b_base06 StatusLineExtended font-size: 9px !important;
+highlight -link=b_base01_b,b_base06 StatusLineNormal font-size: 9px !important;
+highlight -link=b_base0B_b,b_base06 StatusLineSecure font-size: 9px !important;
+highlight StatusQuestion color: inherit !important; background: transparent !important; background-color: inherit !important;
+highlight -link=b_base09_b,b_base06 StatusWarningMsg font-size: 9px !important;
+highlight -link=b_base0E Tag color: blue;
+highlight -link=b_base0C Title color: magenta; font-weight: bold;
+highlight -link=b_base04 URL
+highlight -link=b_base04 URLExtra
+highlight -link=b_base0A,b_base01_b WarningMsg
 map -count -modes=i <C-c> -builtin <C-v><C-c>
 map -count -modes=i <C-v> -builtin <C-v><C-v>
 map -count -modes=i <C-x> -builtin <C-v><C-x>
-map -count -modes=i <C-a> -builtin <C-a><C-a>
+map -count -modes=i <C-a> -builtin <C-v><C-a>
 map -count -modes=n <C-S-N> <count><count>:noscript<Space>popup<Return>
 map -count -modes=n,v j -builtin <count>3j
 map -count -modes=n,v k -builtin <count>3k
@@ -37,6 +87,7 @@ map -count -modes=n <C-c> -builtin <count><C-v><C-c>
 map -count -modes=n <C-v> -builtin <count><C-v><C-v>
 map -count -modes=n <C-x> -builtin <count><C-v><C-x>
 set complete=search,location,file,suggestion
+set guioptions=brsn
 set hintkeys=asdfg;lkjh
 
 " vim: set ft=pentadactyl:

@@ -5,6 +5,7 @@ set relativenumber
 set whichwrap+=<,>,[,],h,l
 set wrap linebreak
 set nocompatible
+set laststatus=2
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -12,7 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'sjl/gundo.vim'
 Plugin 'ervandew/supertab'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'vim-latex/vim-latex'
 Plugin 'panozzaj/vim-autocorrect'
@@ -21,17 +22,20 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'chriskempson/base16-vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'vim-scripts/a.vim'
+Plugin 'AndrewRadev/switch.vim'
+Plugin 'scrooloose/nerdcommenter'
 "Plugin 'colorsupport.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
-
-let g:EclimCompletionMethod = 'omnifunc'
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 set pastetoggle=<F4>
-set tabstop=4
 set history=1000
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
@@ -108,10 +112,10 @@ colorscheme base16-flat
 let base16colorspace=256
 
 if has ('gui_running')
-  colorscheme base16-default
   set spell
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
+  set guioptions-=L  "remove left-hand scroll bar
   set guifont=Monaco\ for\ Powerline\ 8 
   vmap <C-c> "+yi
   vmap <C-x> "+c
@@ -157,9 +161,10 @@ source ~/.vim/toggle.vim
 
 let g:vimwiki_list = [{'path': '~/vimwiki/html/', 'auto_export': 1}]
 set expandtab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set smartindent
+set timeoutlen=1000 ttimeoutlen=0
 
 if &term =~ 'rxvt-unicode-256color'
   " solid underscore
@@ -180,3 +185,17 @@ let g:formatters_cpp = ['my_custom_cpp']
 
 set encoding=utf-8
 let g:Powerline_symbols="fancy"
+
+let g:ycm_confirm_extra_conf = 0
+
+nmap <F8> :TagbarToggle<CR> 
+nmap <F9> :A<CR> 
+
+set exrc
+
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+let g:switch_custom_definitions =
+    \ [
+    \   ['TRUE', 'FALSE']
+    \ ]

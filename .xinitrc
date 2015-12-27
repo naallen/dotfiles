@@ -8,6 +8,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 source /etc/X11/xinit/xinitrc.d/30-dbus.sh
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+export WINEARCH=win32
+export WINEPREFIX=~/.wine32
 
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
@@ -17,6 +19,7 @@ xinput set-prop "TPPS/2 IBM TrackPoint" "Device Accel Constant Deceleration" 0.9
 
 /usr/lib/systemd/systemd --user &
 
+xrandr --output LVDS1 --auto --output VGA1 --off &
 xhost + &
 xset s 60 60 &
 xrdb -merge ~/.Xresources &
