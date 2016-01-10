@@ -30,7 +30,8 @@ sudo /bin/trackpoint_apply.sh &
 .wallpaper/update.sh &
 lxsession &
 systemctl --user start compton &
-systemctl --user start synapse &
+#systemctl --user start synapse &
+synapse -s &
 systemctl --user start dunst &
 #sxhkd &
 #panel &

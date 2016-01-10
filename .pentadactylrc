@@ -87,7 +87,7 @@ map -count -modes=n <C-c> -builtin <count><C-v><C-c>
 map -count -modes=n <C-v> -builtin <count><C-v><C-v>
 map -count -modes=n <C-x> -builtin <count><C-v><C-x>
 set complete=search,location,file,suggestion
-set guioptions=brsn
+set guioptions=brs
 set hintkeys=asdfg;lkjh
 
 " vim: set ft=pentadactyl:

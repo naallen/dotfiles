@@ -22,3 +22,4 @@ URxvt.iso14755 : false
 *TkTheme: clam
 XTerm*reverseVideo: on
 emacs.font:Monaco 9
+URxvt.urgentOnBell: true

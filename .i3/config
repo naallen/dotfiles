@@ -84,7 +84,7 @@ bindsym $mod+5 workspace number 5
 bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9:
+bindsym $mod+9 workspace number 9:
 bindsym $mod+0 workspace number 10:
 
 # move focused container to workspace
@@ -96,7 +96,7 @@ bindsym $mod+F5 move container to workspace number 5
 bindsym $mod+F6 move container to workspace number 6
 bindsym $mod+F7 move container to workspace number 7
 bindsym $mod+F8 move container to workspace number 8
-bindsym $mod+F9 move container to workspace number 9:
+bindsym $mod+F9 move container to workspace number 9:
 bindsym $mod+F10 move container to workspace number 10:
 
 # reload the configuration file
@@ -175,12 +175,16 @@ bar {
                 background      #2C3E50
 
 # class                         border          backgrd         text
-                focused_workspace  #3498DB #2C3E50 #f5f5f5
-                active_workspace   #1ABC9C #2C3E50 #BDC3C7
-                inactive_workspace #2C3E50 #2C3E50 #BDC3C7
-                urgent_workspace   #f92672 #2C3E50 #BDC3C7
+                focused_workspace   #2C3E50 #2C3E50 #3498DB
+                active_workspace    #2C3E50 #2C3E50 #1ABC9C
+                inactive_workspace  #2C3E50 #2C3E50 #BDC3C7
+                urgent_workspace    #2C3E50 #2C3E50 #f92672
         }
 }
+#3498DB #2C3E50 #f5f5f5
+#1ABC9C #2C3E50 #BDC3C7
+#2C3E50 #2C3E50 #BDC3C7
+#f92672 #2C3E50 #BDC3C7
 
 new_window 1pixel
 for_window [class="xfreerdp"] floating disable
@@ -210,5 +214,5 @@ exec_always ~/.bin/disable-standby-fs.py
 exec --no-startup-id i3-msg 'workspace 1:; exec /usr/bin/urxvt' 
 exec --no-startup-id i3-msg 'workspace 2:; exec /usr/bin/palemoon' 
 exec --no-startup-id i3-msg 'workspace 10:; exec /usr/bin/thunderbird'
-#exec --no-startup-id i3-msg 'workspace 9:IX:; exec /usr/bin/xournal'
+exec --no-startup-id i3-msg 'workspace 9:; exec /usr/bin/urxvt -e weechat'
 #exec --no-startup-id i3-msg 'workspace ; exec /usr/bin/keepass'
