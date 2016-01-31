@@ -19,8 +19,8 @@ INTERFACE="${BLOCK_INSTANCE:-wlp3s0}"
 state="$(cat /sys/class/net/$INTERFACE/operstate)"
 
 if [ "$state" != "up" ]; then
-	echo "No Connection"
-	echo "No Connection"
+	#echo "No Connection"
+	#echo "No Connection"
 	exit 0
 fi
 
@@ -29,7 +29,8 @@ ipaddr=`iwgetid -r`
 quality=$(awk "NR==3 {print \$3+0 \"%\"}" /proc/net/wireless)
 
 # full text
-echo -n "$ipaddr ($quality)"
+#echo -n "$ipaddr ($quality)"
+echo -n "$quality"
 [ -n "$speed" ] && echo " ($speed Mbits/s)" || echo
 
 # short text

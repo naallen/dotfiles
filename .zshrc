@@ -313,6 +313,8 @@ alias tarcg="tar cfvz"
 alias \#="sudo "
 alias \$=""
 
+alias dd="dd status=progress"
+
 alias bc="bc -ql"
 alias octave-cli="octave-cli -q"
 alias R='R -q'
