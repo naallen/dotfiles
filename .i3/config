@@ -210,5 +210,5 @@ exec_always ~/.bin/disable-standby-fs.py
 exec --no-startup-id i3-msg 'workspace 1:; exec /usr/bin/urxvt' 
 exec --no-startup-id i3-msg 'workspace 2:; exec /usr/bin/palemoon' 
 exec --no-startup-id i3-msg 'workspace 10:; exec /usr/bin/thunderbird'
-exec --no-startup-id i3-msg 'workspace 9:; exec /usr/bin/urxvt -e weechat'
+#exec --no-startup-id i3-msg 'workspace 9:; exec /usr/bin/urxvt -e weechat'
 #exec --no-startup-id i3-msg 'workspace ; exec /usr/bin/keepass'
