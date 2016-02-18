@@ -178,6 +178,7 @@ if [ "$TERM" = "linux" ]; then
 else
   PROMPT='%(?.➤.%{$fg[red]%}➤%{$reset_color%}) '
 fi
+
 RPROMPT='[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}$(git_super_status)]'
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     RPROMPT='[%{$fg[green]%}$HOST%{$reset_color%}]'$RPROMPT
