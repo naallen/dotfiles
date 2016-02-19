@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/Vundle.vim"]
     path = .vim/bundle/Vundle.vim
     url = git://github.com/VundleVim/Vundle.vim
+[submodule ".zsh/zsh-autosuggestions"]
+	path = .zsh/zsh-autosuggestions
+	url = git://github.com/tarruda/zsh-autosuggestions

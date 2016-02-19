@@ -5,6 +5,13 @@ colors
 
 ~/.zsh/base16-flat.dark.sh
 
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
+
 setopt always_to_end
 setopt no_case_glob
 setopt complete_in_word
@@ -23,8 +30,7 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history
 setopt prompt_subst
-
-bindkey -v
+setopt no_complete_aliases
 
 # hooks for git
 export __GIT_PROMPT_DIR=~/.zsh/
