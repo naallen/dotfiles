@@ -126,6 +126,7 @@ bindsym XF86Display exec sudo trackpoint_apply
 bindsym XF86MonBrightnessDown exec xbacklight -5
 bindsym XF86MonBrightnessUp exec xbacklight +5
 bindsym XF86WLAN exec sudo systemctl restart connman
+bindsym XF86Battery exec ~/.bin/dpms-toggle.sh 
 #bindsym XF86TouchpadToggle exec ~/.bin/dpms-toggle.sh
 bindsym XF86TouchpadToggle exec ~/.bin/multihead.sh
 bindsym XF86RotateWindows exec ~/.bin/rotate.sh normal
@@ -210,5 +211,5 @@ exec_always ~/.bin/disable-standby-fs.py
 exec --no-startup-id i3-msg 'workspace 1:; exec /usr/bin/urxvt' 
 exec --no-startup-id i3-msg 'workspace 2:; exec /usr/bin/palemoon' 
 exec --no-startup-id i3-msg 'workspace 10:; exec /usr/bin/thunderbird'
-#exec --no-startup-id i3-msg 'workspace 9:; exec /usr/bin/urxvt -e weechat'
+exec --no-startup-id i3-msg 'workspace 9:; exec /usr/bin/urxvt -e weechat'
 #exec --no-startup-id i3-msg 'workspace ; exec /usr/bin/keepass'
