@@ -10,3 +10,6 @@
 [submodule ".zsh/zsh-autosuggestions"]
 	path = .zsh/zsh-autosuggestions
 	url = git://github.com/tarruda/zsh-autosuggestions
+[submodule ".zsh/zsh-git-prompt"]
+	path = .zsh/zsh-git-prompt
+	url = https://github.com/olivierverdier/zsh-git-prompt

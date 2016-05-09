@@ -114,6 +114,7 @@ set laststatus=2
 set background=dark
 colorscheme base16-flat
 let base16colorspace=256
+let g:airline_theme="base16"
 
 if has ('gui_running')
   set spell
