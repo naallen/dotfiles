@@ -269,3 +269,5 @@ export SCHRODINGER=/opt/schrodinger2015-1
 stockdilution() {
     units --terse "($2/$1 * $3)" uL
 }
+
+eval "$RUN"
