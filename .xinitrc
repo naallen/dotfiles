@@ -19,21 +19,16 @@ xinput set-prop "TPPS/2 IBM TrackPoint" "Device Accel Constant Deceleration" 0.9
 
 /usr/lib/systemd/systemd --user &
 
-xrandr --output LVDS1 --auto --output VGA1 --off &
 xhost + &
 xset s 60 60 &
 xrdb -merge ~/.Xresources &
-dunst -conf ~/.dunstrc &
 udiskie -N -a -s &
 ~/.bin/lightsOn.sh 50 &
 sudo /bin/trackpoint_apply.sh &
 .wallpaper/update.sh &
 lxsession &
 systemctl --user start compton &
-#systemctl --user start synapse &
 synapse -s &
 systemctl --user start dunst &
-#sxhkd &
-#panel &
 
 exec i3
