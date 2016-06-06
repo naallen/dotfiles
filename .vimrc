@@ -32,6 +32,8 @@ Plugin 'AndrewRadev/switch.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jkramer/vim-checkbox'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'vimwiki/vimwiki'
+Plugin 'mattn/calendar-vim'
 "Plugin 'colorsupport.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -121,7 +123,7 @@ if has ('gui_running')
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=L  "remove left-hand scroll bar
-  set guifont=Monaco\ for\ Powerline\ 8 
+  set guifont=Monaco\ for\ Powerline\ 10 
   vmap <C-c> "+yi
   vmap <C-x> "+c
   vmap <C-v> c<ESC>"+p
@@ -208,4 +210,54 @@ let g:switch_custom_definitions =
 " makes j/k move by virtual lines
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <F9> "=strftime("%b %d, %Y")<CR>P
 
+let g:vimwiki_list = [{'path': '$HOME/Dropbox/vimwiki'}]
+let vimwiki_path='$HOME/Dropbox/vimwiki/'
+let vimwiki_export_path='$HOME/Dropbox/vimwiki/html/'
+let wiki_settings={
+\ 'template_path': vimwiki_export_path.'vimwiki-assets/',
+\ 'template_default': 'default',
+\ 'template_ext': '.html',
+\ 'auto_export': 1,
+\ 'nested_syntaxes': {
+\ 'js':'javascript'
+\ }}
+
+let wikis=["Lab Notebook"]
+let g:vimwiki_list = []
+for wiki_name in wikis
+    let wiki=copy(wiki_settings)
+    let wiki.path = vimwiki_path.wiki_name.'/'
+    let wiki.path_html = vimwiki_export_path.wiki_name.'/'
+    let wiki.diary_index = 'index'
+    let wiki.diary_header = 'Lab Notebook'
+    let wiki.diary_rel_path = 'diary/'
+    call add(g:vimwiki_list, wiki)
+endfor
+
+function! ToggleCalendar()
+  execute ":Calendar"
+  if exists("g:calendar_open")
+    if g:calendar_open == 1
+      execute "q"
+      unlet g:calendar_open
+    else
+      g:calendar_open = 1
+    end
+  else
+    let g:calendar_open = 1
+  end
+endfunction
+nnoremap <F10> :call ToggleCalendar()<CR>
+
+
+let g:tagbar_type_vimwiki = {
+          \   'ctagstype':'vimwiki'
+          \ , 'kinds':['h:header']
+          \ , 'sro':'&&&'
+          \ , 'kind2scope':{'h':'header'}
+          \ , 'sort':0
+          \ , 'ctagsbin':'$HOME/.vim/bundle/vimwiki/vwtags.py'
+          \ , 'ctagsargs': 'default'
+          \ }
