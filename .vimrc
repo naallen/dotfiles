@@ -232,7 +232,7 @@ for wiki_name in wikis
     let wiki.path_html = vimwiki_export_path.wiki_name.'/'
     let wiki.diary_index = 'index'
     let wiki.diary_header = 'Lab Notebook'
-    let wiki.diary_rel_path = 'diary/'
+    let wiki.diary_rel_path = ''
     call add(g:vimwiki_list, wiki)
 endfor
 
@@ -261,3 +261,4 @@ let g:tagbar_type_vimwiki = {
           \ , 'ctagsbin':'$HOME/.vim/bundle/vimwiki/vwtags.py'
           \ , 'ctagsargs': 'default'
           \ }
+
