@@ -230,7 +230,7 @@ for wiki_name in wikis
     let wiki=copy(wiki_settings)
     let wiki.path = vimwiki_path.wiki_name.'/'
     let wiki.path_html = vimwiki_export_path.wiki_name.'/'
-    let wiki.diary_index = 'index'
+    let wiki.diary_index = 'notebook'
     let wiki.diary_header = 'Lab Notebook'
     let wiki.diary_rel_path = ''
     call add(g:vimwiki_list, wiki)
