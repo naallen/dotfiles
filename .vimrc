@@ -262,3 +262,4 @@ let g:tagbar_type_vimwiki = {
           \ , 'ctagsargs': 'default'
           \ }
 
+set display=lastline

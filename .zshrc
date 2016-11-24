@@ -9,7 +9,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
 setopt always_to_end
@@ -235,7 +235,7 @@ if [ -e /usr/bin/pacman ]; then
     alias pace="${PACMAN} -Qe"
     alias pacq="/usr/bin/${INSTALLER} -S --noconfirm"
     alias pacro='sudo -E pacman -Rs $(pacman -Qtdq)'
-    alias pacla='pacman -Qei $(pacman -Q|cut -d" " -f 1)|awk " BEGIN {FS=\":\"}/^Name/{printf(\"\033[1;36m%s\033[1;37m\", \$2)}/^Description/{print \$2}"'
+    alias pacla='${INSTALLER} -Qei $(pacman -Q|cut -d" " -f 1)|awk " BEGIN {FS=\":\"}/^Name/{printf(\"\033[1;36m%s\033[1;37m\", \$2)}/^Description/{print \$2}"'
 fi
 
 export WINEARCH=win32
