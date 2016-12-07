@@ -3,14 +3,9 @@ compinit
 promptinit
 colors
 
-~/.zsh/base16-flat.dark.sh
-
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
-
-#source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
 setopt always_to_end
 setopt no_case_glob
@@ -115,7 +110,8 @@ else
   PROMPT='%(?.➤.%{$fg[red]%}➤%{$reset_color%}) '
 fi
 
-RPROMPT='[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}$(git_super_status)]'
+#RPROMPT='[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}$(git_super_status)]'
+RPROMPT='[%{%(!.$fg[red].$fg[blue])%}%2~%{$reset_color%}]'
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     RPROMPT='[%{$fg[green]%}$HOST%{$reset_color%}]'$RPROMPT
 fi

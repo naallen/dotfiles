@@ -22,7 +22,7 @@ Plugin 'panozzaj/vim-autocorrect'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'chriskempson/base16-vim'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
@@ -47,6 +47,9 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set shortmess=atToOI
+
+set background=dark
+colorscheme solarized
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -114,16 +117,14 @@ noremap <Leader>n :NERDTreeToggle<cr>
 set laststatus=2
 
 set background=dark
-colorscheme base16-flat
-let base16colorspace=256
-let g:airline_theme="base16"
+let g:airline_theme="solarized"
 
 if has ('gui_running')
   set spell
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=L  "remove left-hand scroll bar
-  set guifont=Monaco\ for\ Powerline\ 10 
+  set guifont=Monaco\ for\ Powerline\ 9
   vmap <C-c> "+yi
   vmap <C-x> "+c
   vmap <C-v> c<ESC>"+p

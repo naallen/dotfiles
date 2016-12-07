@@ -1,4 +1,4 @@
-#include "/home/nick/.xrdb/base16-flat.dark.256.xresources"
+#include "/home/nick/.xrdb/SolarizedDark.xresources"
 
 Xft.dpi: 72
 URxvt.depth: 32

@@ -173,13 +173,12 @@ bar {
         workspace_buttons yes
         colors {
             statusline      #ECF0F1
-                background      #2C3E50
+            background      #2C3E50
 
-# class                         border          backgrd         text
-                focused_workspace   #2C3E50 #2C3E50 #3498DB
-                active_workspace    #2C3E50 #2C3E50 #1ABC9C
-                inactive_workspace  #2C3E50 #2C3E50 #BDC3C7
-                urgent_workspace    #2C3E50 #2C3E50 #f92672
+            focused_workspace   #2C3E50 #2C3E50 #3498DB
+            active_workspace    #2C3E50 #2C3E50 #1ABC9C
+            inactive_workspace  #2C3E50 #2C3E50 #BDC3C7
+            urgent_workspace    #2C3E50 #2C3E50 #f92672
         }
 }
 
@@ -214,5 +213,3 @@ exec_always ~/.bin/disable-standby-fs.py
 exec --no-startup-id i3-msg 'workspace 1:; exec /usr/bin/urxvt' 
 exec --no-startup-id i3-msg 'workspace 2:; exec /usr/bin/palemoon' 
 exec --no-startup-id i3-msg 'workspace 10:; exec /usr/bin/thunderbird'
-exec --no-startup-id i3-msg 'workspace 9:; exec /opt/MessengerForDesktop/Messenger'
-#exec --no-startup-id i3-msg 'workspace ; exec /usr/bin/keepass'
