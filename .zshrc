@@ -3,10 +3,6 @@ compinit
 promptinit
 colors
 
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
 setopt always_to_end
 setopt no_case_glob
 setopt complete_in_word
@@ -25,29 +21,28 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history
 setopt prompt_subst
-setopt no_complete_aliases
 
-source ~/.zsh/zsh-git-prompt/zshrc.sh
+#source ~/.zsh/zsh-git-prompt/zshrc.sh
 
 # Default values for the appearance of the prompt. Configure at will.
-ZSH_THEME_GIT_PROMPT_PREFIX=" "
-ZSH_THEME_GIT_PROMPT_SUFFIX=""
-ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
-ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
-ZSH_THEME_GIT_PROMPT_REMOTE=""
-if [ "$TERM" = "linux" ]; then
-    ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}s"
-    ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}x"
-    ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}+"
-    ZSH_THEME_GIT_PROMPT_UNTRACKED="..."
-    ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}o"
-else
-    ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}●"
-    ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}✖"
-    ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}✚"
-    ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
-    ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
-fi
+#ZSH_THEME_GIT_PROMPT_PREFIX=" "
+#ZSH_THEME_GIT_PROMPT_SUFFIX=""
+#ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
+#ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
+#ZSH_THEME_GIT_PROMPT_REMOTE=""
+#if [ "$TERM" = "linux" ]; then
+#    ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}s"
+#    ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}x"
+#    ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}+"
+#    ZSH_THEME_GIT_PROMPT_UNTRACKED="..."
+#    ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}o"
+#else
+#    ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}●"
+#    ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}✖"
+#    ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}✚"
+#    ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
+#    ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
+#fi
 
 export HISTFILE="${HOME}"/.zsh-history
 export HISTSIZE=1000000
@@ -64,15 +59,15 @@ export PATH="$PATH:$HOME/.bin:$HOME/.powerline/scripts"
 # ruby gems
 export PATH="$PATH:$HOME/.gem/ruby/2.0.0/bin"
 
-export PANEL_FIFO="/tmp/panel-fifo"
-export PATH="$PATH:$HOME/.config/bspwm"
-
 precmd() {
     [[ $history[$[ HISTCMD -1 ]] == *(pacmatic)* ]] && rehash
 }
 
 [ -e ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -e /usr/share/doc/pkgfile/command-not-found.zsh ] && source /usr/share/doc/pkgfile/command-not-found.zsh
+
+# platform-specific settings (modified locally)
+[ -e ~/.zsh/platform-specific.zsh ] && source ~/.zsh/platform-specific.zsh
 
 eval `dircolors $HOME/.dir_colors/dircolors-solarized/dircolors.256dark`
 
@@ -127,7 +122,6 @@ bindkey "^I" expand-or-complete-with-dots
 typeset -A key
 
 key[Home]=${terminfo[khome]}
-
 key[End]=${terminfo[kend]}
 key[Insert]=${terminfo[kich1]}
 key[Delete]=${terminfo[kdch1]}
@@ -162,6 +156,8 @@ printf '%s' ${terminfo[rmkx]}
 fi
 
 alias extract='atool -x '
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
 
 conf() {
     case $1 in
