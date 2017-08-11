@@ -19,6 +19,7 @@ xinput set-prop "TPPS/2 IBM TrackPoint" "Device Accel Constant Deceleration" 0.9
 
 /usr/lib/systemd/systemd --user &
 
+synergyc 192.168.221.13 &
 xrandr --output LVDS1 --auto --output VGA1 --off
 xhost + &
 xset s 60 60 &

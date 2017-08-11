@@ -3,7 +3,7 @@
 # and also toggles rotation of the stylus, eraser and cursor through xsetwacom
 
 # Check orientation
-orientation=`/usr/bin/xrandr --verbose -q | grep LVDS | awk '{print $5}'`
+orientation=`/usr/bin/xrandr --verbose -q | grep LVDS | awk '{print $6}'`
 # Rotate the screen and stylus, eraser and cursor, according to your preferences.
 if [ "$1" = "normal" ]; then
     if [ "$orientation" = "normal" ]; then

@@ -106,7 +106,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "zenity --question --text='Are you sure you want to restart i3?' --default-cancel && sudo systemctl restart slim"
 
-bindsym $mod+BackSpace exec xkill -display :0
+bindsym $mod+Delete exec xkill
 
 #bindsym XF86TaskPane workspace number 9
 bindsym XF86TaskPane exec ~/.bin/rotate.sh invert 
@@ -166,19 +166,18 @@ mode "resize" {
 bar {
     strip_workspace_numbers yes
         i3bar_command  /usr/bin/i3bar-icons
-#status_command $HOME/.bin/conky-i3bar
         status_command $HOME/.i3blocks/i3blocks 
         font pango:Monaco for Powerline, FontAwesome, Ionicons 6
         position top
         workspace_buttons yes
         colors {
-            statusline      #ECF0F1
-            background      #2C3E50
+            statusline      #93a1a1
+            background      #002b36
 
-            focused_workspace   #2C3E50 #2C3E50 #3498DB
-            active_workspace    #2C3E50 #2C3E50 #1ABC9C
-            inactive_workspace  #2C3E50 #2C3E50 #BDC3C7
-            urgent_workspace    #2C3E50 #2C3E50 #f92672
+            focused_workspace   #002b36 #002b36 #859900
+            active_workspace    #002b36 #002b36 #93a1a1
+            inactive_workspace  #002b36 #002b36 #93a1a1
+            urgent_workspace    #002b36 #002b36 #839496
         }
 }
 
@@ -188,19 +187,22 @@ for_window [class="^.*"] border pixel 1
 
 for_window [title="synapse"] border none
 
-#class                  border  backgr.  text
-client.focused          #3498D8 #2C3E50  #f5f5f5
-client.unfocused        #3498D8 #2C3E50  #BDC3C7
-client.focused_inactive #3498D8 #2C3E50  #BDC3C7
-client.urgent           #3498D8 #2C3E50  #BDC3C7
+#class                  border  backgr.  text     indicator   child_border
+client.focused          #073642 #002b36  #f5f5f5  #586e75     #002b36
+client.unfocused        #073642 #002b36  #BDC3C7  #002b36     #002b36
+client.focused_inactive #073642 #002b36  #BDC3C7  #002b36     #002b36
+client.urgent           #073642 #002b36  #BDC3C7  #002b36     #002b36
 
 for_window [class="Catfish"] floating enable
 for_window [class="Shutter"] floating enable
 for_window [class="Gloobus-preview"] floating enable
 for_window [class="rdesktop"] floating disable
 for_window [class="urxvt"] floating enable
+for_window [class="TeamViewer"] floating enable
 for_window [class="Navigator" urgent="latest"] focus
 for_window [title="Maple Simulator"] floating enable 
+for_window [title="TeamViewer Panel"] floating enable 
+for_window [title="TeamViewer Panel (minimized)"] floating enable 
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -211,5 +213,5 @@ for_window [class="google-chrome"] floating disable # Powerpoint Online
 exec_always ~/.bin/disable-standby-fs.py
 
 exec --no-startup-id i3-msg 'workspace 1:; exec /usr/bin/urxvt' 
-exec --no-startup-id i3-msg 'workspace 2:; exec /usr/bin/palemoon' 
+exec --no-startup-id i3-msg 'workspace 2:; exec /usr/bin/firefox' 
 exec --no-startup-id i3-msg 'workspace 10:; exec /usr/bin/thunderbird'
