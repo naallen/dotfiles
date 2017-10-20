@@ -3,7 +3,7 @@
 
 include "/home/nick/.gtkrc-2.0.mine"
 gtk-theme-name="Numix-ArchBlue"
-gtk-icon-theme-name="Paper"
+gtk-icon-theme-name="Paper-Mono-Dark"
 gtk-font-name="Roboto 10"
 gtk-cursor-theme-name="OpenZone_White"
 gtk-cursor-theme-size=0
