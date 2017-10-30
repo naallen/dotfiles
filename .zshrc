@@ -1,3 +1,7 @@
+if [ -z "$TMUX" ] && [ -n "$SSH_TTY" ]; then
+      tmux attach-session -t ssh || tmux new-session -s ssh
+          exit
+        fi
 autoload -Uz compinit promptinit colors add-zsh-hook
 compinit
 promptinit
